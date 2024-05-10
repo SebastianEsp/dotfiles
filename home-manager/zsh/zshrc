@@ -1,0 +1,89 @@
+source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.p10k.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh #Must source after zsh-syntax-highlighting
+
+# Ensure globally unique history
+setopt histignorealldups
+
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+
+# Keybinds
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+
+r-delregion() {
+  if ((REGION_ACTIVE)) then
+     zle kill-region
+  else 
+    local widget_name=$1
+    shift
+    zle $widget_name -- $@
+  fi
+}
+
+r-deselect() {
+  ((REGION_ACTIVE = 0))
+  local widget_name=$1
+  shift
+  zle $widget_name -- $@
+}
+
+r-select() {
+  ((REGION_ACTIVE)) || zle set-mark-command
+  local widget_name=$1
+  shift
+  zle $widget_name -- $@
+}
+
+r-cancel() {
+  zle set-mark-command -n -1
+}
+
+for key     kcap   seq        mode   widget (
+    sfchar kRIT   $'\E[1;2C' select   forward-char
+    sbchar kLFT   $'\E[1;2D' select   backward-char
+    dfchar kcuf1  $'\EOC'    deselect forward-char
+    dbchar kcub1  $'\EOD'    deselect backward-char
+
+    sfword x $'\E[1;6C' select forward-word
+    sbword x $'\E[1;6D' select backward-word
+    dfword x $'\E[1;5C' deselect forward-word
+    dsword x $'\E[1;5D' deselect backward-word
+
+    shome x $'\E[1;2H' select beginning-of-line
+    send x $'\E[1;2F' select end-of-line
+    dhome x $'\E[1;1H' deselect beginning-of-line
+    dend x $'\E[1;1F' deselect end-of-line
+
+    del     kdch1   $'\E[3~'  delregion delete-char
+    bs      x       $'^?'     delregion backward-delete-char
+
+  ) {
+  eval "key-$key() {
+    r-$mode $widget \$@
+  }"
+  zle -N key-$key
+  bindkey ${terminfo[$kcap]-$seq} key-$key
+}
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
+zle -N r-cancel
+bindkey '^[' r-cancel
+
+# Direnv
+eval "$(direnv hook zsh)"
+zstyle ':z4h:direnv'         enable 'yes'
+# Show "loading" and "unloading" notifications from direnv.
+zstyle ':z4h:direnv:success' notify 'yes'
