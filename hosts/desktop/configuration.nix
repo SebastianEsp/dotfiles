@@ -21,7 +21,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  boot.kernelParams = ["nvidia-drm.modeset=1"];
+  boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   boot.supportedFilesystems = ["ntfs"];
 
   networking.hostName = "nixos"; # Define your hostname.
