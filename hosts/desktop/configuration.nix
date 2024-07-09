@@ -89,8 +89,9 @@
     openssl
     powershell
     winetricks
-    libsForQt5.polkit-kde-agent
+    lxqt.lxqt-policykit
     appimagekit
+    networkmanagerapplet
   ];
 
   system.stateVersion = "24.05";

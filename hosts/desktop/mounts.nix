@@ -4,7 +4,7 @@
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,vers=1.0,uid=sebastian,gid=users"];
+    in ["${automount_opts},credentials=/home/sebastian/dotfiles/smb-secrets,vers=1.0,uid=sebastian,gid=users"];
   };
 
   fileSystems."/home/sebastian/nas/video" = {
@@ -12,6 +12,6 @@
     fsType = "cifs";
     options = let
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,vers=1.0,uid=sebastian,gid=users"];
+    in ["${automount_opts},credentials=/home/sebastian/dotfiles/smb-secrets,vers=1.0,uid=sebastian,gid=users"];
   };
 }

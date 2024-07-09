@@ -5,17 +5,24 @@
   modulesPath,
   ...
 }: {
-  security = {
-    polkit = {
-      enable = true;
-      debug = true;
-      extraConfig = ''
-        /* Log authorization checks. */
-        polkit.addRule(function(action, subject) {
-          polkit.log("user " +  subject.user + " is attempting action " + action.id + " from PID " + subject.pid);
-        });
-      '';
-    };
-  };
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("users")
+          && (
+            action.id == "org.freedesktop.login1.reboot" ||
+            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.power-off" ||
+            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+          )
+        )
+      {
+        return polkit.Result.YES;
+      }
+    })
+  '';
   programs.gnupg.agent.enable = true;
+  programs.gnupg.agent.enableSSHSupport = true;
 }

@@ -46,7 +46,7 @@
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
     vscode
-    spotify
+    spotifywm
     discord
     firefox
     python3

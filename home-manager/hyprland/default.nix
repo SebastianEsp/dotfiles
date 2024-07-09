@@ -38,6 +38,7 @@
     enable = true;
 
     extraConfig = ''
+      exec-once = nm-applet
       exec-once = waybar
       exec-once = [workspace 1 silent] kitty
       exec-once = [workspace 1 silent] firefox

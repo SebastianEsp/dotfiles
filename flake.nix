@@ -13,6 +13,8 @@
     hyprland.url = "github:hyprwm/Hyprland";
 
     ags.url = "github:Aylur/ags";
+
+    kwin-scripts.url = "github:hnjae/kwin-scripts";
   };
 
   outputs = {
