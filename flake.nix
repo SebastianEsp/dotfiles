@@ -2,17 +2,14 @@
   description = "NixOS Flake configuration";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
+
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    ags.url = "github:Aylur/ags";
 
     kwin-scripts.url = "github:hnjae/kwin-scripts";
   };
@@ -60,7 +57,6 @@
         modules = [
           # > Our main nixos configuration file <
           ./hosts/desktop/configuration.nix
-          ./modules/hyprland.nix
           ./modules/steam
           ./modules/docker
           ./modules/plasma6

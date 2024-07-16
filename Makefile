@@ -1,6 +1,6 @@
 update:
 	nix flake update
-	sudo nixos-rebuild switch --flake .
+	sudo nixos-rebuild switch --flake  .
 
 home:
 	home-manager switch --flake .

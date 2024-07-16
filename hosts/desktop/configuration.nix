@@ -17,6 +17,7 @@
     ./polkit.nix
     ./mounts.nix
     ./users.nix
+    ./virtualization.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

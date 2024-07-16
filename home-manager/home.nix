@@ -10,13 +10,13 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    ./hyprland
+    #./hyprland
     ./git
     ./direnv
     ./kitty
     ./zsh
     ./nvim
-    ./ags
+    #./ags
   ];
 
   nixpkgs = {
@@ -52,7 +52,7 @@
     python3
     appimage-run
     antimicrox
-    blender
+    #blender
     elixir
     killall
     protonvpn-gui
