@@ -79,6 +79,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.teamviewer.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -94,6 +96,15 @@
     lxqt.lxqt-policykit
     appimagekit
     networkmanagerapplet
+    dotnetCorePackages.sdk_9_0
+  ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.package = pkgs.nix-ld-rs;
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+
   ];
 
   system.stateVersion = "24.05";
