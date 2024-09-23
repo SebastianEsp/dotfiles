@@ -1,9 +1,11 @@
-update:
-	nix flake update
-	sudo nixos-rebuild switch --flake  .
+update: rebuild home
 
 home:
 	home-manager switch --flake .
+
+rebuild:
+	nix flake update
+	sudo nixos-rebuild switch --flake  .
 
 history:
 	nix profile history --profile /nix/var/nix/profiles/system

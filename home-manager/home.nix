@@ -51,7 +51,7 @@
     firefox
     python3
     appimage-run
-    antimicrox
+    #antimicrox
     #blender
     elixir
     killall
@@ -83,8 +83,6 @@
   programs.git.enable = true;
 
   programs.fzf.enable = true;
-
-  programs.gamemode.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

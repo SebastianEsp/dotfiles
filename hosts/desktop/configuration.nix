@@ -25,6 +25,20 @@
 
   boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   boot.supportedFilesystems = ["ntfs"];
+  boot.kernelModules = [ "uhid" "uinput" ];
+  boot.kernelPatches = lib.singleton {
+    name = "enable-uhid";
+    patch = null;
+    extraStructuredConfig = with lib.kernel; {
+      HID = yes;
+      UHID = yes;
+      INPUT_UINPUT = yes;
+    };
+  };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    rtl8812au
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -66,7 +80,22 @@
   '';
 
   # Enable bluetooth
-  hardware.bluetooth.enable = true;
+  #hardware.bluetooth.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        UserspaceHID = true;
+        Experimental = true;
+      };
+    };
+  };
+
+
+  hardware.xpadneo.enable = true;
 
   # Gnome keyring
   services.gnome.gnome-keyring.enable = true;
@@ -87,7 +116,6 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     joycond
-    linuxKernel.packages.linux_zen.xpadneo
     samba
     cifs-utils
     openssl
@@ -106,6 +134,8 @@
     # here, NOT in environment.systemPackages
 
   ];
+
+  programs.gamemode.enable = true;
 
   system.stateVersion = "24.05";
 }
