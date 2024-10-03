@@ -125,7 +125,13 @@
     appimagekit
     networkmanagerapplet
     dotnetCorePackages.sdk_9_0
+    unityhub
   ];
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+  };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.package = pkgs.nix-ld-rs;

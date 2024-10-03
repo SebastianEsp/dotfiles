@@ -51,6 +51,7 @@
     firefox
     python3
     appimage-run
+    wowup-cf
     #antimicrox
     #blender
     elixir
