@@ -53,7 +53,7 @@
     appimage-run
     wowup-cf
     #antimicrox
-    #blender
+    blender
     elixir
     killall
     protonvpn-gui

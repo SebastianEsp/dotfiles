@@ -26,15 +26,15 @@
   boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
-  boot.kernelPatches = lib.singleton {
-    name = "enable-uhid";
-    patch = null;
-    extraStructuredConfig = with lib.kernel; {
-      HID = yes;
-      UHID = yes;
-      INPUT_UINPUT = yes;
-    };
-  };
+  #boot.kernelPatches = lib.singleton {
+  #  name = "enable-uhid";
+  #  patch = null;
+  #  extraStructuredConfig = with lib.kernel; {
+  #    HID = yes;
+  #    UHID = yes;
+  #    INPUT_UINPUT = yes;
+  #  };
+  #};
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8812au
@@ -110,6 +110,17 @@
 
   services.teamviewer.enable = true;
 
+  security.wrappers."mount.cifs" = {
+    program = "mount.cifs";
+    source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
+    owner = "root";
+    group = "root";
+    setuid = true;
+  };
+
+  # Gamecube controller support
+  services.udev.enable = true;
+  services.udev.packages = [ pkgs.dolphin-emu ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -124,9 +135,14 @@
     lxqt.lxqt-policykit
     appimagekit
     networkmanagerapplet
+    transmission_4-qt
     dotnetCorePackages.sdk_9_0
-    unityhub
+    (unityhub.override { extraLibs = { ... }: [ harfbuzz ]; })
+    dolphin-emu
+    libusb1
+    udev
   ];
+  
 
   xdg.portal = {
     enable = true;
