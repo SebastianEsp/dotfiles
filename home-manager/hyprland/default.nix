@@ -1,5 +1,6 @@
-{pkgs, hyprland, ...}: {
+{pkgs, inputs, hyprland, ...}: {
   imports = [
+    ./wlogout
   ];
 
   # allow fontconfig to discover fonts and configurations installed through home.packages
@@ -22,36 +23,45 @@
   };
 
   home.packages = with pkgs; [
+    swaynotificationcenter
+    xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
+    qt5.qtwayland
+    qt6.qtwayland
   ];
 
-  services.dunst = {
-    enable = true;
-  };
-
   wayland.windowManager.hyprland = {
+
     enable = true;
 
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus
+      #inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+      #inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus
     ];
 
     extraConfig = ''
-      exec-once = nm-applet
-      exec-once = waybar
+
+      input {
+        kb_layout = us,dk
+        kb_options = grp:alt_shift_toggle
+      }
+
+      #exec-once = nm-applet
+      #exec-once = waybar
       exec-once = [workspace 1 silent] kitty
-      exec-once = [workspace 1 silent] firefox
-      exec-once = easyeffects
+      exec-once = [workspace 1 silent] firefox --class ff0
+      exec-once = [workspace 9 silent] firefox --class ff2
+      exec-once = [workspace 10 silent] firefox --class ff1
+      #exec-once = easyeffects
       exec-once = [workspace 10 silent] discord --use-gl=desktop
       exec-once = [workspace 10 silent] spotify
-      exec-once = dunst
+      exec-once = swaync
       exec-once = [workspace 3 silent] steam
 
       # Monitor rules
-      monitor = DP-3, 1920x1080, 3640x0, 1, transform, 1
+      monitor = DP-2, 1920x1080, 3640x0, 1, transform, 1
       monitor = DP-1, 2560x1440@144, 1080x52, 1, bitdepth, 10, vrr, 2
-      monitor = DP-2, 1920x1080@120, 0x0, 1, transform, 1
+      monitor = DP-3, 1920x1080@120, 0x0, 1, transform, 1
       monitor = , preferred, auto, 1 #default rule
 
       # Keybinds
@@ -59,9 +69,12 @@
       bind = SUPER, f, exec, firefox
       bindm = ALT, mouse:272, movewindow
       bindm = ALT, mouse:273, resizewindow
+      # Volume knob
       bind = , xf86audioraisevolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ +5%     
       bind = , xf86audiolowervolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ -5%
       bind = , xf86audiomute, exec, wpctl set-mute @DEFAULT_SINK@ toggle
+      # Swaync
+      bind = SUPER, n, exec, swaync-client -t -sw
 
       # Move focus with arrow keys
       bind = SUPER, left, movefocus, l
@@ -106,12 +119,15 @@
       workspace = 1, monitor:DP-1, default:true
       workspace = 2, monitor:DP-1
       workspace = 3, monitor:DP-1
-      workspace = 9, monitor:DP-3, gapsout:0, default:true, layoutopt:orientation:top
-      workspace = 10, monitor:DP-2, gapsout:0, default:true, layoutopt:orientation:top
+      workspace = 9, monitor:DP-2, gapsout:0, default:true, layoutopt:orientation:top
+      workspace = 10, monitor:DP-3, gapsout:0, default:true, layoutopt:orientation:top
 
       # Window rules
       windowrule = workspace 1, kitty
+      windowrule = workspace 1, class:ff0
       windowrule = workspace 3, steam
+      windowrule = workspace 9, class:ff2
+      windowrule = workspace 10, class:ff1
       windowrule = workspace 10, discord, float
       windowrule = workspace 10, spotify, float
     '';

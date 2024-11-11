@@ -10,13 +10,12 @@
 }: {
   # You can import other home-manager modules here
   imports = [
-    #./hyprland
+    ./hyprland
     ./git
     ./direnv
     ./kitty
     ./zsh
     ./nvim
-    #./ags
   ];
 
   nixpkgs = {
