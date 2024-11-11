@@ -21,7 +21,11 @@
     ./networking.nix
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
 
   boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   boot.supportedFilesystems = ["ntfs"];
@@ -116,6 +120,15 @@
     owner = "root";
     group = "root";
     setuid = true;
+  };
+
+  services.transmission = { 
+    enable = true; #Enable transmission daemon
+    openRPCPort = true; #Open firewall for RPC
+    settings = { #Override default settings
+      rpc-bind-address = "0.0.0.0"; #Bind to own IP
+      rpc-whitelist = "127.0.0.1,10.0.0.1"; #Whitelist your remote machine (10.0.0.1 in this example)
+    };
   };
 
   # Gamecube controller support

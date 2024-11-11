@@ -2,7 +2,6 @@
   description = "NixOS Flake configuration";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
@@ -12,12 +11,20 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     kwin-scripts.url = "github:hnjae/kwin-scripts";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    hyprland,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -60,6 +67,7 @@
           ./modules/steam
           ./modules/docker
           ./modules/plasma6
+          ./modules/hyprland
         ];
       };
     };

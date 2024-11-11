@@ -1,8 +1,5 @@
 {pkgs, hyprland, ...}: {
   imports = [
-    #hyprland.homeManagerModules.default
-    ./waybar
-    ./rofi
   ];
 
   # allow fontconfig to discover fonts and configurations installed through home.packages
@@ -25,8 +22,6 @@
   };
 
   home.packages = with pkgs; [
-    libsForQt5.qt5.qtwayland
-    qt6.qtwayland
     xdg-desktop-portal-hyprland
   ];
 
@@ -36,6 +31,11 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus
+    ];
 
     extraConfig = ''
       exec-once = nm-applet
