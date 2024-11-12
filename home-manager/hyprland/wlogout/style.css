@@ -1,9 +1,16 @@
+/* 
+  Color palette
+  https://colorhunt.co/palette/17153b2e236c433d8bc8acd6
+  rgb(23, 21, 59)
+  rgb(46, 35, 108)
+  rgb(67, 61, 139)
+  rgb(200, 172, 214)
+*/
+
 * {
   background-image: none;
-  font-size: ${fntSize}px;
+  font-size: 28px;
 }
-
-@import "$HOME/.config/waybar/theme.css";
 
 window {
   background-color: transparent;
@@ -11,7 +18,7 @@ window {
 
 button {
   color: black;
-  background-color: #11111b;
+  background-color: rgba(23, 21, 59, 0.95);
   outline-style: none;
   border: none;
   border-width: 0px;
@@ -24,81 +31,76 @@ button {
   animation: gradient_f 20s ease-in infinite;
 }
 
-button:focus {
-  background-color: @wb-act-bg;
-  background-size: 30%;
-}
-
-button:hover {
-  background-color: @wb-hvr-bg;
+button:focus, button:hover {
+  background-color: rgba(67, 61, 139, 0.95);
   background-size: 40%;
-  border-radius: ${active_rad}px;
+  border-radius: 5px;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
 }
 
-button:hover#lock {
-  border-radius: ${active_rad}px;
-  margin: ${hvr}px 0px ${hvr}px ${mgn}px;
+button:focus#lock {
+  border-radius: 50px;
+  margin: 331px 0px 331px 403px;
 }
 
-button:hover#logout {
-  border-radius: ${active_rad}px;
-  margin: ${hvr}px 0px ${hvr}px 0px;
+button:focus#logout {
+  border-radius: 50px;
+  margin: 331px 0px 331px 0px;
 }
 
-button:hover#suspend {
-  border-radius: ${active_rad}px;
-  margin: ${hvr}px 0px ${hvr}px 0px;
+button:focus#suspend {
+  border-radius: 50px;
+  margin: 331px 0px 331px 0px;
 }
 
-button:hover#shutdown {
-  border-radius: ${active_rad}px;
-  margin: ${hvr}px 0px ${hvr}px 0px;
+button:focus#shutdown {
+  border-radius: 50px;
+  margin: 331px 0px 331px 0px;
 }
 
-button:hover#hibernate {
-  border-radius: ${active_rad}px;
-  margin: ${hvr}px 0px ${hvr}px 0px;
+button:focus#hibernate {
+  border-radius: 50px;
+  margin: 331px 0px 331px 0px;
 }
 
-button:hover#reboot {
-  border-radius: ${active_rad}px;
-  margin: ${hvr}px ${mgn}px ${hvr}px 0px;
+button:focus#reboot {
+  border-radius: 50px;
+  margin: 331px 403px 331px 0px;
 }
 
 #lock {
-  background-image: image(url("icons/lock_black.png"));
-  border-radius: ${button_rad}px 0px 0px ${button_rad}px;
-  margin: ${mgn}px 0px ${mgn}px ${mgn}px;
+  background-image: image(url("icons/lock.svg"));
+  border-radius: 80px 0px 0px 80px;
+  margin: 403px 0px 403px 403px;
 }
 
 #logout {
   background-image: image(url("icons/logout_black.png"));
   border-radius: 0px 0px 0px 0px;
-  margin: ${mgn}px 0px ${mgn}px 0px;
+  margin: 403px 0px 403px 0px;
 }
 
 #suspend {
   background-image: image(url("icons/suspend_black.png"));
   border-radius: 0px 0px 0px 0px;
-  margin: ${mgn}px 0px ${mgn}px 0px;
+  margin: 403px 0px 403px 0px;
 }
 
 #shutdown {
   background-image: image(url("icons/shutdown_black.png"));
   border-radius: 0px 0px 0px 0px;
-  margin: ${mgn}px 0px ${mgn}px 0px;
+  margin: 403px 0px 403px 0px;
 }
 
 #hibernate {
   background-image: image(url("icons/hibernate_black.png"));
   border-radius: 0px 0px 0px 0px;
-  margin: ${mgn}px 0px ${mgn}px 0px;
+  margin: 403px 0px 403px 0px;
 }
 
 #reboot {
   background-image: image(url("icons/reboot_black.png"));
-  border-radius: 0px ${button_rad}px ${button_rad}px 0px;
-  margin: ${mgn}px ${mgn}px ${mgn}px 0px;
+  border-radius: 0px 80px 80px 0px;
+  margin: 403px 403px 403px 0px;
 }

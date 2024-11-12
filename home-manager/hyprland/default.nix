@@ -78,7 +78,7 @@
       # Swaync
       bind = SUPER, n, exec, swaync-client -t -sw
       # wlogout
-      bind = SUPER, l, exec, wlogout
+      bind = SUPER, l, exec, ~/logoutlaunch.sh
       bind = SUPER SHIFT, Return, togglespecialworkspace, 
 
       # Move focus with arrow keys

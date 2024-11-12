@@ -29,4 +29,4 @@ wlTmplt="$HOME/.config/wlogout/style.css"
 wlStyle="$(envsubst < $wlTmplt)"
 
 #// launch wlogout
-wlogout -b 6 -c 0 -r 0 -m 0 --css <(echo "${wlStyle}") --protocol layer-shell
+wlogout -b 6 -c 4 -r 0 -m 100 --protocol layer-shell
