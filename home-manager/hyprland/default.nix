@@ -1,5 +1,6 @@
 {pkgs, inputs, hyprland, ...}: {
   imports = [
+    ./waybar
     ./wlogout
   ];
 
@@ -48,15 +49,16 @@
 
       #exec-once = nm-applet
       #exec-once = waybar
+      exec-once = [workspace special silent] kitty
       exec-once = [workspace 1 silent] kitty
-      exec-once = [workspace 1 silent] firefox --class ff0
-      exec-once = [workspace 9 silent] firefox --class ff2
-      exec-once = [workspace 10 silent] firefox --class ff1
+      #exec-once = [workspace 1 silent] firefox --class ff0
+      #exec-once = [workspace 9 silent] firefox --class ff2
+      #exec-once = [workspace 10 silent] firefox --class ff1
       #exec-once = easyeffects
       exec-once = [workspace 10 silent] discord --use-gl=desktop
       exec-once = [workspace 10 silent] spotify
       exec-once = swaync
-      exec-once = [workspace 3 silent] steam
+      exec-once = [workspace 3 silent] steam -silent
 
       # Monitor rules
       monitor = DP-2, 1920x1080, 3640x0, 1, transform, 1
@@ -75,6 +77,9 @@
       bind = , xf86audiomute, exec, wpctl set-mute @DEFAULT_SINK@ toggle
       # Swaync
       bind = SUPER, n, exec, swaync-client -t -sw
+      # wlogout
+      bind = SUPER, l, exec, wlogout
+      bind = SUPER SHIFT, Return, togglespecialworkspace, 
 
       # Move focus with arrow keys
       bind = SUPER, left, movefocus, l
@@ -109,6 +114,8 @@
       bind = CTRL SHIFT, 8, movetoworkspace, 8
       bind = CTRL SHIFT, 9, movetoworkspace, 9
       bind = CTRL SHIFT, 0, movetoworkspace, 10
+      bind = CTRL SHIFT, left, movetoworkspace, -1
+      bind = CTRL SHIFT, right, movetoworkspace, +1
 
       # Other keybinds
       bind = SUPER, s, togglefloating
