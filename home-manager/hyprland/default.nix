@@ -45,6 +45,8 @@
       input {
         kb_layout = us,dk
         kb_options = grp:alt_shift_toggle
+        accel_profile = flat
+        sensitivity = 0.5 
       }
 
       #exec-once = nm-applet
