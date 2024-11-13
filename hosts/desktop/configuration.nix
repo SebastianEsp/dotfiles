@@ -30,6 +30,7 @@
   boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
+  boot.blacklistedKernelModules = ["hid_logitech_dj" "hid_logitech_hidpp"];
   #boot.kernelPatches = lib.singleton {
   #  name = "enable-uhid";
   #  patch = null;

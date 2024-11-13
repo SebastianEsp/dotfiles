@@ -68,9 +68,9 @@
 
       # Keybinds
       bind = SUPER, Return, exec, kitty
-      bind = SUPER, f, exec, firefox
-      bindm = ALT, mouse:272, movewindow
-      bindm = ALT, mouse:273, resizewindow
+      #bind = SUPER, f, exec, firefox
+      bindm = SUPER, mouse:272, movewindow
+      bindm = SUPER, mouse:273, resizewindow
       # Volume knob
       bind = , xf86audioraisevolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ +5%     
       bind = , xf86audiolowervolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ -5%
@@ -80,13 +80,14 @@
       # wlogout
       bind = SUPER, l, exec, ~/logoutlaunch.sh
       bind = SUPER SHIFT, Return, togglespecialworkspace, 
+      bind = SUPER, f, fullscreen
 
       # Move focus with arrow keys
       bind = SUPER, left, movefocus, l
       bind = SUPER, right, movefocus, r
       bind = SUPER, up, movefocus, u
       bind = SUPER, down, movefocus, d
-
+      
       # Switch workspaces with CTRL + arrow keys
       bind = CTRL, left, workspace, m-1
       bind = CTRL, right, workspace, m+1
@@ -114,8 +115,8 @@
       bind = CTRL SHIFT, 8, movetoworkspace, 8
       bind = CTRL SHIFT, 9, movetoworkspace, 9
       bind = CTRL SHIFT, 0, movetoworkspace, 10
-      bind = CTRL SHIFT, left, movetoworkspace, -1
-      bind = CTRL SHIFT, right, movetoworkspace, +1
+      bind = CTRL ALT, left, movetoworkspace, -1
+      bind = CTRL ALT, right, movetoworkspace, +1
 
       # Other keybinds
       bind = SUPER, s, togglefloating

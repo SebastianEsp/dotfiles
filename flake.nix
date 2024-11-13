@@ -2,8 +2,7 @@
   description = "NixOS Flake configuration";
 
   inputs = {
-    #nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
     home-manager.url = "github:nix-community/home-manager/release-24.05";
@@ -23,6 +22,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     hyprland,
     ...
@@ -59,8 +59,16 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+      nixos = nixpkgs.lib.nixosSystem rec{
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs outputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        };
+        
         modules = [
           # > Our main nixos configuration file <
           ./hosts/desktop/configuration.nix
