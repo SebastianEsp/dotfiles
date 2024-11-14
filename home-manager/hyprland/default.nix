@@ -2,6 +2,7 @@
   imports = [
     ./waybar
     ./wlogout
+    ./rofi
   ];
 
   # allow fontconfig to discover fonts and configurations installed through home.packages
