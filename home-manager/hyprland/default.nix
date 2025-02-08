@@ -30,7 +30,12 @@
     xdg-desktop-portal-hyprland
     qt5.qtwayland
     qt6.qtwayland
+    hyprshot
+    hyprpolkitagent
+    overskride
   ];
+
+  wayland.windowManager.hyprland.systemd.enable = false;
 
   wayland.windowManager.hyprland = {
 
@@ -51,17 +56,19 @@
       }
 
       #exec-once = nm-applet
-      #exec-once = waybar
-      exec-once = [workspace special silent] kitty
-      exec-once = [workspace 1 silent] kitty
-      #exec-once = [workspace 1 silent] firefox --class ff0
-      #exec-once = [workspace 9 silent] firefox --class ff2
-      #exec-once = [workspace 10 silent] firefox --class ff1
+      exec-once = uwsm app waybar
+      exec-once = [workspace special silent] uwsm app -- kitty
+      exec-once = [workspace 1 silent] uwsm app -- kitty
+      exec-once = [workspace 2 silent] uwsm app -- firefox -P default
+      exec-once = [workspace 9 silent] uwsm app -- firefox -P right
+      exec-once = [workspace 10 silent] uwsm app -- firefox -P left
       #exec-once = easyeffects
-      exec-once = [workspace 10 silent] discord --use-gl=desktop
-      exec-once = [workspace 10 silent] spotify
-      exec-once = swaync
-      exec-once = [workspace 3 silent] steam -silent
+      exec-once = [workspace 10 silent] uwsm app -- discord --use-gl=desktop
+      exec-once = [workspace 9 silent] uwsm app -- spotify
+      exec-once = uwsm app -- swaync
+      exec-once = [workspace 3 silent] uwsm app -- steam -silent
+
+      exec-once = systemctl --user start hyprpolkitagent
 
       # Monitor rules
       monitor = DP-2, 1920x1080, 3640x0, 1, transform, 1
@@ -75,15 +82,20 @@
       bindm = SUPER, mouse:272, movewindow
       bindm = SUPER, mouse:273, resizewindow
       # Volume knob
-      bind = , xf86audioraisevolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ +5%     
-      bind = , xf86audiolowervolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ -5%
+      bind = , xf86audioraisevolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ 5%+     
+      bind = , xf86audiolowervolume, exec, wpctl set-sink-volume @DEFAULT_SINK@ 5%-
       bind = , xf86audiomute, exec, wpctl set-mute @DEFAULT_SINK@ toggle
+      # Volume
+      bind = SUPER, =, exec, wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%+     
+      bind = SUPER, -, exec, wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%-
       # Swaync
       bind = SUPER, n, exec, swaync-client -t -sw
       # wlogout
       bind = SUPER, l, exec, ~/logoutlaunch.sh
       bind = SUPER SHIFT, Return, togglespecialworkspace, 
       bind = SUPER, f, fullscreen
+      
+      bind = , PRINT, exec, hyprshot -m region 
 
       # Move focus with arrow keys
       bind = SUPER, left, movefocus, l
@@ -124,7 +136,10 @@
       # Other keybinds
       bind = SUPER, s, togglefloating
       bind = SUPER, q, killactive
-      bind = SUPER, space, exec, rofi -show drun -theme ~/.config/rofi/rounded-red-dark.rasi    
+
+      # Rofi binds
+      bind = SUPER, space, exec, ~/rofilaunch.sh  
+      bind = SUPER, tab, exec, ~/rofilaunch.sh --window 
 
       # Workspace rules
       workspace = 1, monitor:DP-1, default:true
@@ -135,10 +150,7 @@
 
       # Window rules
       windowrule = workspace 1, kitty
-      windowrule = workspace 1, class:ff0
       windowrule = workspace 3, steam
-      windowrule = workspace 9, class:ff2
-      windowrule = workspace 10, class:ff1
       windowrule = workspace 10, discord, float
       windowrule = workspace 10, spotify, float
     '';

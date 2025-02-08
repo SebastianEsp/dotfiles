@@ -31,6 +31,7 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
   boot.blacklistedKernelModules = ["hid_logitech_dj" "hid_logitech_hidpp"];
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   #boot.kernelPatches = lib.singleton {
   #  name = "enable-uhid";
   #  patch = null;
@@ -64,6 +65,7 @@
   i18n.defaultLocale = "en_DK.utf8";
 
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
+  environment.variables.MOZ_ENABLE_WAYLAND= "0";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -172,6 +174,9 @@
   ];
 
   programs.gamemode.enable = true;
+
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = false;
 
   system.stateVersion = "24.05";
 }

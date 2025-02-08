@@ -11,10 +11,9 @@
     Option         "metamodes" "DP-0: nvidia-auto-select +1080+0 {AllowGSYNCCompatible=On}, DP-2: 1920x1080_120 +0+0 {rotation=left}, DP-4: nvidia-auto-select +3640+0 {rotation=left}"
   '';
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    #driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   hardware.nvidia.modesetting.enable = true;
