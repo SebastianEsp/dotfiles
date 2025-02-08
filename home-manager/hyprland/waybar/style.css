@@ -49,6 +49,10 @@ window#waybar.hidden {
     color: white;
 }
 
+#workspaces button.active {
+    color: white;
+}
+
 #bluetooth {
     margin-right: 8px;
     padding-left: 16px;
@@ -120,11 +124,6 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #383c4a;
-}
-
-#wireplumber.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
 }
 
 #custom-mem {
