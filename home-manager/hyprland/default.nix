@@ -10,7 +10,7 @@
 
   systemd.user.sessionVariables = {
     "NIXOS_OZONE_WL" = "1"; # for any ozone-based browser & electron apps to run on wayland
-    "MOZ_ENABLE_WAYLAND" = "1"; # for firefox to run on wayland
+    "MOZ_ENABLE_WAYLAND" = "0"; # for firefox to run on wayland
     "MOZ_WEBRENDER" = "1";
 
     # for hyprland with nvidia gpu, ref https://wiki.hyprland.org/Nvidia/
@@ -37,9 +37,9 @@
     hyprpaper
   ];
 
-  home.file."~/wallpaper_randomizer.sh".source = ./wallpaper_randomizer.sh;
-
   wayland.windowManager.hyprland.systemd.enable = false;
+
+  home.file."~/wallpaper_randomizer.sh".source = ./wallpaper_randomizer.sh;
 
   wayland.windowManager.hyprland = {
 
@@ -59,9 +59,8 @@
         sensitivity = 0.5 
       }
 
-      exec-once = uwsm app -- waybar
-      exec-once = uwsm app -- hyprpaper
-      exec-once = sh ~/wallpaper_randomizer.sh
+      exec-once = uwsm -- app waybar
+      exec-once = uwsm -- app hyprpaper
       exec-once = [workspace special silent] uwsm app -- kitty
       exec-once = [workspace 1 silent] uwsm app -- kitty
       exec-once = [workspace 2 silent] uwsm app -- firefox -P default
@@ -81,7 +80,6 @@
 
       # Keybinds
       bind = SUPER, Return, exec, kitty
-      #bind = SUPER, f, exec, firefox
       bindm = SUPER, mouse:272, movewindow
       bindm = SUPER, mouse:273, resizewindow
       # Volume knob

@@ -65,7 +65,6 @@
   i18n.defaultLocale = "en_DK.utf8";
 
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
-  environment.variables.MOZ_ENABLE_WAYLAND= "0";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
