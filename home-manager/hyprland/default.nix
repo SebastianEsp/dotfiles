@@ -33,6 +33,7 @@
     hyprshot
     hyprpolkitagent
     overskride
+    pwvucontrol
   ];
 
   wayland.windowManager.hyprland.systemd.enable = false;

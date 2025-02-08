@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "temperature", "keyboard-state"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "bluetooth", "tray"],
+    "modules-right": ["wireplumber", "bluetooth", "tray"],
     "output": "DP-1",
 
 
@@ -45,28 +45,13 @@
         "on-click": "hyprctl dispatch exec [float] overskride"
     },
 
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "reverse-scrolling": 1,
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "婢 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["奄", "奔", "墳"]
-        },
-        "on-click": "pavucontrol",
-        "min-length": 13,
+    "wireplumber": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "on-click": "hyprctl dispatch exec [float] pwvucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-icons": ["", "", ""]
     },
-
 
     "temperature": {
         // "thermal-zone": 2,
