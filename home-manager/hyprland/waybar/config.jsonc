@@ -1,4 +1,5 @@
 {
+    // Icons from nerdfonts and fontawsome
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "height": 30, // Waybar height (to be removed for auto height)
@@ -34,6 +35,7 @@
             "code": "󰨞",
             "kitty": "",
             "class<steam>": "",
+            "class<steam_app_.*>": "󰊴",
             "title<Battle.net>": ""
             },
     },

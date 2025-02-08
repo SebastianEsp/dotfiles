@@ -34,7 +34,10 @@
     hyprpolkitagent
     overskride
     pwvucontrol
+    hyprpaper
   ];
+
+  home.file."~/wallpaper_randomizer.sh".source = ./wallpaper_randomizer.sh;
 
   wayland.windowManager.hyprland.systemd.enable = false;
 
@@ -56,19 +59,18 @@
         sensitivity = 0.5 
       }
 
-      #exec-once = nm-applet
-      exec-once = uwsm app waybar
+      exec-once = uwsm app -- waybar
+      exec-once = uwsm app -- hyprpaper
+      exec-once = sh ~/wallpaper_randomizer.sh
       exec-once = [workspace special silent] uwsm app -- kitty
       exec-once = [workspace 1 silent] uwsm app -- kitty
       exec-once = [workspace 2 silent] uwsm app -- firefox -P default
       exec-once = [workspace 9 silent] uwsm app -- firefox -P right
       exec-once = [workspace 10 silent] uwsm app -- firefox -P left
-      #exec-once = easyeffects
       exec-once = [workspace 10 silent] uwsm app -- discord --use-gl=desktop
       exec-once = [workspace 9 silent] uwsm app -- spotify
       exec-once = uwsm app -- swaync
       exec-once = [workspace 3 silent] uwsm app -- steam -silent
-
       exec-once = systemctl --user start hyprpolkitagent
 
       # Monitor rules
