@@ -34,12 +34,9 @@
     hyprpolkitagent
     overskride
     pwvucontrol
-    hyprpaper
   ];
 
   wayland.windowManager.hyprland.systemd.enable = false;
-
-  home.file."~/wallpaper_randomizer.sh".source = ./wallpaper_randomizer.sh;
 
   wayland.windowManager.hyprland = {
 
