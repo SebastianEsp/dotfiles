@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "load", "memory", "disk", "temperature"],
     "modules-center": ["clock"],
-    "modules-right": ["mpris", "wireplumber", "bluetooth", "tray"],
+    "modules-right": ["custom/playerctl-status", "wireplumber", "bluetooth", "tray"],
     "output": "DP-1",
 
 
@@ -75,17 +75,11 @@
         "format": "{:%a, %d %b, %I:%M %p}"
     },
 
-    "mpris": {
-        "format": "DEFAULT: {player_icon} {dynamic}",
-        "format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
-        "player-icons": {
-            "default": "▶",
-            "mpv": "🎵"
-        },
-        "status-icons": {
-            "paused": "⏸"
-        },
-        "ignored-players": ["firefox"]
+    "custom/playerctl-status": {
+        "format": "HEST",
+        "return-type": "json",
+		"max-length": 40,
+        "exec": "~/playerctl.sh"
     },
 
     "bluetooth": {
