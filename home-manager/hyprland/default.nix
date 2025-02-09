@@ -3,6 +3,7 @@
     ./waybar
     ./wlogout
     ./rofi
+    ./hyprpaper
   ];
 
   # allow fontconfig to discover fonts and configurations installed through home.packages
@@ -58,6 +59,7 @@
 
       exec-once = uwsm -- app waybar
       exec-once = uwsm -- app hyprpaper
+      exec-once = sh ~/wallpaper_randomizer.sh
       exec-once = [workspace special silent] uwsm app -- kitty
       exec-once = [workspace 1 silent] uwsm app -- kitty
       exec-once = [workspace 2 silent] uwsm app -- firefox -P default
