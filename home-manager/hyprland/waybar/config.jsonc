@@ -107,7 +107,7 @@
     },
 
     "image#icon": {
-        "path": "$home/.config/waybar/assets/nix-snowflake-colours.svg",
+        "path": "$home/.config/waybar/assets/nix-snowflake-colours.png",
         "size": 32,
         "interval": 5,
     },
