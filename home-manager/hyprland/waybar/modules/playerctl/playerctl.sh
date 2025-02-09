@@ -13,7 +13,7 @@ done
 while true; do
     count=0
 	while read -r playing position length name artist title arturl hpos hlen; do
-		# remove leaders
+		# remove leaders 
 		playing=${playing:1} position=${position:1} length=${length:1} name=${name:1}
 		artist=${artist:1} title=${title:1} arturl=${arturl:1} hpos=${hpos:1} hlen=${hlen:1}
 
