@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "load", "memory", "disk", "temperature"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/playerctl-status", "wireplumber", "bluetooth", "tray"],
+    "modules-right": ["custom/playerctl", "wireplumber", "bluetooth", "tray"],
     "output": "DP-1",
 
 
@@ -75,12 +75,16 @@
         "format": "{:%a, %d %b, %I:%M %p}"
     },
 
-    "custom/playerctl-status": {
-        "format": "HEST",
-        "return-type": "json",
+	"custom/playerctl": {
+		"format": "{}",
+		"return-type": "json",
 		"max-length": 40,
-        "exec": "~/playerctl.sh"
-    },
+		"exec": "$HOME/playerctl.sh -p spotify 2> /dev/null",
+		"on-click": "playerctl -p spotify play-pause",
+		"on-right-click": "sys-notif media",
+		"on-scroll-up": "playerctl -p spotify position 3+",
+		"on-scroll-down": "playerctl -p spotify position 3-"
+	},
 
     "bluetooth": {
         "on-click": "hyprctl dispatch exec [float] overskride"
