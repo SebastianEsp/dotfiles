@@ -35,6 +35,7 @@ while true; do
             fi
         else
             line="${artist:+$artist ${title:+- }}${title:+$title }${hpos:+$hpos${hlen:+|}}$hlen"
+            count=0
         fi
 
 		# json escaping
