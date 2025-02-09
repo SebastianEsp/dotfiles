@@ -10,9 +10,8 @@ while getopts ":p:" opt; do
   esac
 done
 
-count=0
-
 while true; do
+    count=0
 	while read -r playing position length name artist title arturl hpos hlen; do
 		# remove leaders
 		playing=${playing:1} position=${position:1} length=${length:1} name=${name:1}
