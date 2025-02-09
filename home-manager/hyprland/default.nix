@@ -57,8 +57,8 @@
         sensitivity = 0.5 
       }
 
-      exec-once = uwsm -- app waybar
-      exec-once = uwsm -- app hyprpaper
+      exec-once = uwsm app -- waybar
+      exec-once = uwsm app -- hyprpaper
       exec-once = sh ~/wallpaper_randomizer.sh
       exec-once = [workspace special silent] uwsm app -- kitty
       exec-once = [workspace 1 silent] uwsm app -- kitty

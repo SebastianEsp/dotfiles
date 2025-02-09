@@ -6,9 +6,9 @@
     "margin": "20 20 0 20",
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "load", "memory", "disk", "temperature", "keyboard-state"],
+    "modules-left": ["hyprland/workspaces", "load", "memory", "disk", "temperature"],
     "modules-center": ["clock"],
-    "modules-right": ["wireplumber", "bluetooth", "tray"],
+    "modules-right": ["mpris", "wireplumber", "bluetooth", "tray"],
     "output": "DP-1",
 
 
@@ -73,6 +73,19 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a, %d %b, %I:%M %p}"
+    },
+
+    "mpris": {
+        "format": "DEFAULT: {player_icon} {dynamic}",
+        "format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "ignored-players": ["firefox"]
     },
 
     "bluetooth": {
