@@ -53,14 +53,16 @@ window#waybar.hidden {
     color: white;
 }
 
-#image {
+#custom-icon {
+    
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("/home/sebastian/.config/waybar/assets/nix-snowflake-colours.svg");
 } 
 
 #bluetooth {

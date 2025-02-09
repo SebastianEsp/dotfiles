@@ -6,7 +6,7 @@
     "margin": "20 20 0 20",
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["image#icon", "hyprland/workspaces", "load", "memory", "disk", "temperature"],
+    "modules-left": ["custom/icon", "hyprland/workspaces", "load", "memory", "disk", "temperature"],
     "modules-center": ["clock"],
     "modules-right": ["custom/playerctl", "wireplumber", "bluetooth", "tray"],
     "output": "DP-1",
@@ -106,10 +106,9 @@
         "tooltip": false,
     },
 
-    "image#icon": {
-        "path": "~/.config/waybar/assets/nix-snowflake-colours.png",
-        "size": 32,
-        "interval": 5,
+    "custom/icon": {
+        "format":" ",
+        "tooltip": false,
     },
 
     "tray": {
