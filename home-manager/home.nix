@@ -90,6 +90,9 @@
     #nerd-fonts.space-mono
   ];
 
+  # Sekiro patcher
+  home.file."sekirofpsunlock".source = ./sekirofpsunlock;
+
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
