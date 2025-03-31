@@ -6,6 +6,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   # You can import other home-manager modules here
@@ -39,17 +40,24 @@
     homeDirectory = "/home/sebastian";
   };
 
-  programs.firefox.package = (pkgs.wrapFirefox.override { libpulseaudio = pkgs.libpressureaudio; }) pkgs.firefox-unwrapped { };
+  #programs.firefox.package = 
+  programs.java = { enable = true; package = (pkgs.jdk21.override { enableJavaFX = true; }); }; 
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    selenium-server-standalone
+    geckodriver
+    google-chrome
+    chromedriver
+    prismlauncher
+    rclone
     jq
     envsubst
     vscode
     spotifywm
     discord
-    firefox
+    (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
     python3
     appimage-run
     wowup-cf
@@ -78,6 +86,8 @@
     go
     inotify-tools
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "SpaceMono" ]; })
+    #nerd-fonts.fira-code
+    #nerd-fonts.space-mono
   ];
 
   # Enable home-manager and git

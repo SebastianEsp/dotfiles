@@ -1,9 +1,10 @@
-{pkgs, inputs, hyprland, ...}: {
+{pkgs, pkgs-unstable, inputs, hyprland, ...}: {
   imports = [
     ./waybar
     ./wlogout
     ./rofi
     ./hyprpaper
+    ./hypridle
   ];
 
   # allow fontconfig to discover fonts and configurations installed through home.packages
@@ -11,7 +12,7 @@
 
   systemd.user.sessionVariables = {
     "NIXOS_OZONE_WL" = "1"; # for any ozone-based browser & electron apps to run on wayland
-    "MOZ_ENABLE_WAYLAND" = "0"; # for firefox to run on wayland
+    "MOZ_ENABLE_WAYLAND" = "1"; # for firefox to run on wayland
     "MOZ_WEBRENDER" = "1";
 
     # for hyprland with nvidia gpu, ref https://wiki.hyprland.org/Nvidia/
@@ -37,11 +38,13 @@
     pwvucontrol
   ];
 
-  wayland.windowManager.hyprland.systemd.enable = false;
+  #wayland.windowManager.hyprland.systemd.enable = false;
 
   wayland.windowManager.hyprland = {
 
     enable = true;
+
+    package = inputs.hyprland.packages.${pkgs-unstable.stdenv.hostPlatform.system}.hyprland;
 
     plugins = [
       #inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
@@ -57,23 +60,29 @@
         sensitivity = 0.5 
       }
 
-      exec-once = uwsm app -- waybar
-      exec-once = uwsm app -- hyprpaper
-      exec-once = sh ~/wallpaper_randomizer.sh
-      exec-once = [workspace special silent] uwsm app -- kitty
-      exec-once = [workspace 1 silent] uwsm app -- kitty
-      exec-once = [workspace 2 silent] uwsm app -- firefox -P default
-      exec-once = [workspace 9 silent] uwsm app -- firefox -P right
-      exec-once = [workspace 10 silent] uwsm app -- firefox -P left
-      exec-once = [workspace 10 silent] uwsm app -- discord --use-gl=desktop
-      exec-once = [workspace 9 silent] uwsm app -- spotify
-      exec-once = uwsm app -- swaync
-      exec-once = [workspace 3 silent] uwsm app -- steam -silent
+      # HDR support
+      experimental {
+        xx_color_management_v4 = true
+      }
+
+      exec-once = hypridle
+      exec-once = waybar
+      exec-once = hyprpaper
+      exec-once = [workspace special silent] kitty
+      exec-once = [workspace 1 silent] kitty
+      exec-once = [workspace 2 silent] firefox -P default
+      exec-once = [workspace 9 silent] firefox -P right
+      exec-once = [workspace 10 silent] firefox -P left
+      exec-once = [workspace 10 silent] discord --use-gl=desktop
+      exec-once = [workspace 9 silent] spotify
+      exec-once = swaync
+      exec-once = [workspace 3 silent] steam -silent
       exec-once = systemctl --user start hyprpolkitagent
+      exec-once = sh ~/wallpaper_randomizer.sh
 
       # Monitor rules
-      monitor = DP-2, 1920x1080, 3640x0, 1, transform, 1
-      monitor = DP-1, 2560x1440@144, 1080x52, 1, bitdepth, 10, vrr, 2
+      monitor = DP-2, 1920x1080, 4520x0, 1, transform, 1
+      monitor = DP-1, 3440x1440@164, 1080x52, 1, bitdepth, 10, vrr, 2
       monitor = DP-3, 1920x1080@120, 0x0, 1, transform, 1
       monitor = , preferred, auto, 1 #default rule
 
@@ -142,17 +151,17 @@
       bind = SUPER, tab, exec, ~/rofilaunch.sh --window 
 
       # Workspace rules
-      workspace = 1, monitor:DP-1, default:true
+      workspace = 1, monitor:DP-1, default:true `
       workspace = 2, monitor:DP-1
       workspace = 3, monitor:DP-1
       workspace = 9, monitor:DP-2, gapsout:0, default:true, layoutopt:orientation:top
       workspace = 10, monitor:DP-3, gapsout:0, default:true, layoutopt:orientation:top
 
       # Window rules
-      windowrule = workspace 1, kitty
-      windowrule = workspace 3, steam
-      windowrule = workspace 10, discord, float
-      windowrule = workspace 10, spotify, float
+      #windowrule = workspace 1, kitty
+      #windowrule = workspace 3, steam
+      windowrule = workspace 10, title:(Discord Updater)
+      #windowrule = workspace 10, spotify, float
     '';
   };
 

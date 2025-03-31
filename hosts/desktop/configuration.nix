@@ -7,6 +7,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -31,7 +32,20 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
   boot.blacklistedKernelModules = ["hid_logitech_dj" "hid_logitech_hidpp"];
-  boot.kernelPackages = pkgs.linuxPackages_6_12;
+  #boot.kernelPackages = pkgs.linuxPackages_6_12;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
+  #  argsOverride = rec {
+  #  	src = pkgs.fetchurl {
+  #      url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+  #      sha256 = "sha256-nRrjmi6gJNmWRvZF/bu/pFRVdxMromQ+Ad914yJG1sc=";
+  #    };
+  #    version = "6.12.21";
+  #    modDirVersion = "6.12.21";
+  #  };
+  #});
+
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPatches = lib.singleton {
   #  name = "enable-uhid";
   #  patch = null;
@@ -43,7 +57,7 @@
   #};
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    rtl8812au
+    #rtl8812au
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -149,15 +163,17 @@
     powershell
     winetricks
     lxqt.lxqt-policykit
-    appimagekit
     networkmanagerapplet
     transmission_4-qt
     dotnetCorePackages.sdk_9_0
+    pkgs.adwaita-icon-theme
+    appimagekit
     (unityhub.override { extraLibs = { ... }: [ harfbuzz ]; })
     dolphin-emu
     libusb1
     udev
   ];
+
   
 
   xdg.portal = {
