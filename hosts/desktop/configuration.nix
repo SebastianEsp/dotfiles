@@ -162,7 +162,6 @@
     cifs-utils
     openssl
     powershell
-    winetricks
     lxqt.lxqt-policykit
     networkmanagerapplet
     transmission_4-qt
