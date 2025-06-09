@@ -6,4 +6,9 @@
     extraGroups = ["networkmanager" "wheel" "docker"];
     shell = pkgs.zsh;
   };
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.space-mono
+  ];
 }

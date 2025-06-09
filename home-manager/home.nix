@@ -86,9 +86,8 @@
     go
     inotify-tools
     sops
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "SpaceMono" ]; })
-    #nerd-fonts.fira-code
-    #nerd-fonts.space-mono
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.space-mono
   ];
 
   # Enable home-manager and git

@@ -26,6 +26,7 @@
     experimental-features = ["nix-command" "flakes"];
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    download-buffer-size = 524288000;
   };
 
   boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
@@ -76,7 +77,7 @@
   #time.timeZone = "Europe/Helsinki";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_DK.utf8";
+  i18n.defaultLocale = "en_DK.UTF-8";
 
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
   environment.variables.MOZ_ENABLE_WAYLAND = "0";
@@ -167,7 +168,6 @@
     transmission_4-qt
     dotnetCorePackages.sdk_9_0
     pkgs.adwaita-icon-theme
-    appimagekit
     (unityhub.override { extraLibs = { ... }: [ harfbuzz ]; })
     dolphin-emu
     libusb1
