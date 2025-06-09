@@ -168,6 +168,7 @@
     transmission_4-qt
     dotnetCorePackages.sdk_9_0
     pkgs.adwaita-icon-theme
+    font-awesome
     (unityhub.override { extraLibs = { ... }: [ harfbuzz ]; })
     dolphin-emu
     libusb1
