@@ -15,14 +15,14 @@
     enable = true;
     enable32Bit = true;
   };
-
+  
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.powerManagement.enable = false;
   hardware.nvidia.powerManagement.finegrained = false;
-  hardware.nvidia.open = false;
+  hardware.nvidia.open = true;
   hardware.nvidia.nvidiaSettings = false;
 
-  hardware.nvidia.package = pkgs.linuxPackages.nvidiaPackages.latest;
+  hardware.nvidia.package = pkgs-unstable.linuxPackages.nvidiaPackages.latest;
 
   /* hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
     version = "555.42.02";

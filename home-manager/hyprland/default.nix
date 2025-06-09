@@ -36,6 +36,7 @@
     hyprpolkitagent
     overskride
     pwvucontrol
+    kdePackages.xwaylandvideobridge
   ];
 
   #wayland.windowManager.hyprland.systemd.enable = false;
@@ -44,7 +45,7 @@
 
     enable = true;
 
-    package = inputs.hyprland.packages.${pkgs-unstable.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     plugins = [
       #inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars

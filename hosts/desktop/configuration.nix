@@ -32,7 +32,7 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
   boot.blacklistedKernelModules = ["hid_logitech_dj" "hid_logitech_hidpp"];
-  #boot.kernelPackages = pkgs.linuxPackages_6_12;
+  #boot.kernelPackages = pkgs-unstable.linuxPackages_6_12;
   #boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
   #  argsOverride = rec {

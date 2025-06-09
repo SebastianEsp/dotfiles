@@ -85,6 +85,7 @@
     kubernetes-helm
     go
     inotify-tools
+    sops
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "SpaceMono" ]; })
     #nerd-fonts.fira-code
     #nerd-fonts.space-mono
