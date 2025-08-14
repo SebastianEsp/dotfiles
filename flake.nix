@@ -18,6 +18,13 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -26,6 +33,7 @@
     nixpkgs-unstable,
     home-manager,
     hyprland,
+    lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;

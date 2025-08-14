@@ -46,11 +46,19 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
+    #Gaming
+    wowup-cf
+    runelite
+    prismlauncher
+
+    #Programming
+    go
+    gcc
     selenium-server-standalone
     geckodriver
     google-chrome
     chromedriver
-    prismlauncher
+
     rclone
     jq
     envsubst
@@ -60,7 +68,6 @@
     (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
     python3
     appimage-run
-    wowup-cf
     #antimicrox
     blender
     elixir
@@ -79,11 +86,9 @@
     automake
     libtool
     gnum4
-    gcc
     easyeffects
     kubectl
     kubernetes-helm
-    go
     inotify-tools
     sops
     pkgs.nerd-fonts.fira-code
