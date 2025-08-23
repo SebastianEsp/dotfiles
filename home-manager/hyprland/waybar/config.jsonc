@@ -9,7 +9,7 @@
     "modules-left": ["custom/icon", "hyprland/workspaces", "load", "memory", "disk", "temperature"],
     "modules-center": ["clock"],
     "modules-right": ["custom/playerctl", "wireplumber", "bluetooth", "tray"],
-    "output": "DP-1",
+    "output": "DP-6",
 
 
     //***************************
