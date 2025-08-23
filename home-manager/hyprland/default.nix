@@ -83,9 +83,9 @@
       exec-once = sh ~/wallpaper_randomizer.sh
 
       # Monitor rules
-      monitor = DP-2, 1920x1080, 4520x0, 1, transform, 1
-      monitor = DP-1, 3440x1440@164, 1080x52, 1, bitdepth, 10, vrr, 2
-      monitor = DP-3, 1920x1080@120, 0x0, 1, transform, 1
+      monitor = DP-5, 1920x1080, 4520x0, 1, transform, 1
+      monitor = DP-6, 3440x1440@164, 1080x52, 1, bitdepth, 10, vrr, 2
+      monitor = DP-4, 1920x1080@120, 0x0, 1, transform, 1
       monitor = , preferred, auto, 1 #default rule
 
       # Keybinds
@@ -153,11 +153,11 @@
       bind = SUPER, tab, exec, ~/rofilaunch.sh --window 
 
       # Workspace rules
-      workspace = 1, monitor:DP-1, default:true `
-      workspace = 2, monitor:DP-1
-      workspace = 3, monitor:DP-1
-      workspace = 9, monitor:DP-2, gapsout:0, default:true, layoutopt:orientation:top
-      workspace = 10, monitor:DP-3, gapsout:0, default:true, layoutopt:orientation:top
+      workspace = 1, monitor:DP-6, default:true `
+      workspace = 2, monitor:DP-6
+      workspace = 3, monitor:DP-6
+      workspace = 9, monitor:DP-5, gapsout:0, default:true, layoutopt:orientation:top
+      workspace = 10, monitor:DP-4, gapsout:0, default:true, layoutopt:orientation:top
 
       # Window rules
       #windowrule = workspace 1, kitty

@@ -7,7 +7,7 @@
   imports =
     [ 
       (modulesPath + "/installer/scan/not-detected.nix")
-      lanzaboote.nixosModules.lanzaboote
+      #lanzaboote.nixosModules.lanzaboote
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -15,12 +15,12 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  boot.loader.systemd-boot.enable = lib.mkForce false;
+  #boot.loader.systemd-boot.enable = lib.mkForce false;
 
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
-  };
+  #boot.lanzaboote = {
+  #  enable = true;
+  #  pkiBundle = "/var/lib/sbctl";
+  #};
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/eede813d-5f03-4da3-82a8-cc6100181bf1";

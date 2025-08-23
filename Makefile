@@ -4,11 +4,8 @@ home:
 	home-manager switch --flake .\#sebastian@nixos
 
 rebuild:
-	nix flake update
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update 
 	sudo nixos-rebuild switch --flake .#nixos
-
-history:
-	nix profile history --profile /nix/var/nix/profiles/system
 
 gc:
 	# remove all generations older than 7 days
