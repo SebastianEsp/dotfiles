@@ -25,6 +25,16 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+
+    quickshell = {
+      # add ?ref=<tag> to track a tag
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell?ref=v0.2.0";
+
+      # THIS IS IMPORTANT
+      # Mismatched system dependencies will lead to crashes and other issues.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -34,6 +44,7 @@
     home-manager,
     hyprland,
     lanzaboote,
+    quickshell,
     ...
   } @ inputs: let
     inherit (self) outputs;

@@ -17,6 +17,7 @@
     ./kitty
     ./zsh
     ./nvim
+    ./helix
   ];
 
   nixpkgs = {
@@ -41,7 +42,9 @@
   };
 
   #programs.firefox.package = 
-  programs.java = { enable = true; package = (pkgs.jdk21.override { enableJavaFX = true; }); }; 
+  programs.java = { enable = true; package = (pkgs.jdk21.override { enableJavaFX = true; }); };
+  #quickshell = inputs.quickshell.packages.${pkgs.system}.default;
+
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
@@ -58,6 +61,13 @@
     geckodriver
     google-chrome
     chromedriver
+    python3
+    elixir
+
+    #Quickshell
+    inputs.quickshell.packages.${pkgs.system}.default
+
+    nomachine-client
 
     rclone
     jq
@@ -66,11 +76,10 @@
     spotifywm
     discord
     (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
-    python3
+
     appimage-run
     #antimicrox
     blender
-    elixir
     killall
     protonvpn-gui
     ranger
@@ -98,6 +107,7 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
 
   programs.fzf.enable = true;
 

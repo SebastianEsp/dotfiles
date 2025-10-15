@@ -67,6 +67,7 @@
         xx_color_management_v4 = true
       }
 
+      exec-once = xrandr --output DP-6 --primary
       exec-once = hypridle
       exec-once = waybar
       exec-once = hyprpaper
@@ -84,9 +85,29 @@
 
       # Monitor rules
       monitor = DP-5, 1920x1080, 4520x0, 1, transform, 1
-      monitor = DP-6, 3440x1440@164, 1080x52, 1, bitdepth, 10, vrr, 2
+      #monitor = DP-6, 3440x1440@164, 1080x52, 1, bitdepth, 10, cm, hdr, sdrbrightness, 1.2, sdrsaturation, 0.98, vrr, 2
       monitor = DP-4, 1920x1080@120, 0x0, 1, transform, 1
       monitor = , preferred, auto, 1 #default rule
+
+      monitorv2 {
+        output = DP-6
+        mode = 3440x1440@164
+        position = 1080x52
+        scale = 1
+        supports_hdr = 1
+        supports_wide_color = 1
+        vrr = 2
+        bitdepth = 10
+        cm = hdr
+        sdrbrightness = 1.4
+        sdrsaturation = 1.05
+      }
+
+      render {
+        direct_scanout = 1
+        #cm_auto_hdr = 1
+        cm_fs_passthrough = 1
+      }
 
       # Keybinds
       bind = SUPER, Return, exec, kitty

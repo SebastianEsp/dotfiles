@@ -13,10 +13,12 @@
     qemu
     quickemu
     quickgui
+    spice-vdagent
     (writeShellScriptBin "qemu-system-x86_64-uefi" ''
         qemu-system-x86_64 \
           -bios ${OVMF.fd}/FV/OVMF.fd \
           "$@"
       '')
   ];
+  services.spice-vdagentd.enable = true;
 }
