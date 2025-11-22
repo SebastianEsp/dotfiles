@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-firefox -P default &
-sleep 0.5
-firefox -P left &
-sleep 0.5
-firefox -P right &
+sleep 20
+hyprctl dispatch exec -- '[workspace 2 silent]' firefox -P default &
+sleep 20
+hyprctl dispatch exec -- '[workspace 10 silent]' firefox -P left &
+sleep 20
+hyprctl dispatch exec -- '[workspace 9 silent]' firefox -P right &

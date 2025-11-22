@@ -18,6 +18,7 @@
     ./zsh
     ./nvim
     ./helix
+    ./scripts
   ];
 
   nixpkgs = {
@@ -102,6 +103,8 @@
     sops
     pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.space-mono
+    ftb-app
+    openconnect
   ];
 
   # Enable home-manager and git

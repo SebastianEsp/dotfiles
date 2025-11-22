@@ -4,7 +4,7 @@ home:
 	home-manager switch --flake .\#sebastian@nixos
 
 rebuild:
-	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update 
+	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
 	sudo nixos-rebuild switch --flake .#nixos
 
 gc:

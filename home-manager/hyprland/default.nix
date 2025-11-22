@@ -39,8 +39,6 @@
     kdePackages.xwaylandvideobridge
   ];
 
-  #wayland.windowManager.hyprland.systemd.enable = false;
-
   wayland.windowManager.hyprland = {
 
     enable = true;
@@ -73,9 +71,10 @@
       exec-once = hyprpaper
       exec-once = [workspace special silent] kitty
       exec-once = [workspace 1 silent] kitty
-      exec-once = [workspace 2 silent] firefox -P default
-      exec-once = [workspace 9 silent] firefox -P right
-      exec-once = [workspace 10 silent] firefox -P left
+      exec-once = sh ~/start_firefox.sh
+      #exec-once = [workspace 2 silent] firefox -P default
+      #exec-once = [workspace 9 silent] firefox -P right
+      #exec-once = [workspace 10 silent] firefox -P left
       exec-once = [workspace 10 silent] discord --use-gl=desktop
       exec-once = [workspace 9 silent] spotify
       exec-once = swaync
@@ -98,7 +97,7 @@
         supports_wide_color = 1
         vrr = 2
         bitdepth = 10
-        cm = hdr
+        #cm = hdr
         sdrbrightness = 1.4
         sdrsaturation = 1.05
       }
@@ -183,9 +182,9 @@
       # Window rules
       #windowrule = workspace 1, kitty
       #windowrule = workspace 3, steam
-      windowrule = workspace 10, title:(Discord Updater)
-      #windowrule = workspace 10, spotify, float
+      windowrule = workspace 10, match:title (Discord Updater)
+      #windowrule = workspace 9, silent, class:spotify
     '';
   };
 
-} 
+}
