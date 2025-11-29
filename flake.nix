@@ -101,6 +101,24 @@
       };
     };
 
+    nixosConfigurations = {
+      foxflower = nixpkgs.lib.nixosSystem rec{
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs outputs;
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        };
+        
+        modules = [
+          # > Our main nixos configuration file <
+          ./hosts/server/configuration.nix
+        ];
+      };
+    };
+
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {

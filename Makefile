@@ -1,7 +1,7 @@
 update: rebuild home
 
 home:
-	home-manager switch --flake .\#sebastian@nixos
+	home-manager switch --flake .\#$$(whoami)@$$(hostname)
 
 rebuild:
 	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
