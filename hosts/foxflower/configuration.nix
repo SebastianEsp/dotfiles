@@ -87,7 +87,9 @@
      transmission_4-qt
      jdk21
      screen
-     rclone 
+     rclone
+     git
+     openssl
    ];
 
   services.transmission = { 
