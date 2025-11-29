@@ -13,7 +13,7 @@
                 locations."/nzbget".proxyPass = "http://localhost:6789";
                 locations."/sonarr".proxyPass = "http://localhost:8989";
                 locations."/radarr".proxyPass = "http://localhost:7878";
-                locations."/portainer".proxyPass = "http://localhost:8000";
+                locations."/portainer".proxyPass = "https://localhost:9443";
                 locations."/emby" = {
                     extraConfig = ''
                         return 302 $scheme://$host/emby/;
