@@ -29,7 +29,7 @@
 
     quickshell = {
       # add ?ref=<tag> to track a tag
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell/src/tag/v0.2.1";
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell?ref=v0.2.1";
 
       # THIS IS IMPORTANT
       # Mismatched system dependencies will lead to crashes and other issues.
