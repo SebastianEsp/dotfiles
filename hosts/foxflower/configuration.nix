@@ -90,6 +90,7 @@
      rclone
      git
      openssl
+     gnumake
    ];
 
   services.transmission = { 
