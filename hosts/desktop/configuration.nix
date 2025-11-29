@@ -29,6 +29,13 @@
     download-buffer-size = 524288000;
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+
   boot.kernelParams = ["nvidia-drm.modeset=1" "nvidia-drm.fbdev=1"];
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
