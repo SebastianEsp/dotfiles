@@ -114,7 +114,7 @@
         
         modules = [
           # > Our main nixos configuration file <
-          ./hosts/server/configuration.nix
+          ./hosts/foxflower/configuration.nix
         ];
       };
     };
