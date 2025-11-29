@@ -5,7 +5,7 @@ home:
 
 rebuild:
 	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
-	sudo nixos-rebuild switch --flake .#nixos
+	sudo nixos-rebuild switch --flake $$(hostname)
 
 gc:
 	# remove all generations older than 7 days
