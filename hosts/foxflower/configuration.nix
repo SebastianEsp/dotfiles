@@ -9,7 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./mediaserver.nix
-      ./nginx.nix
+      #./nginx.nix
+      ./traefik.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -97,8 +98,15 @@
      git
      openssl
      gnumake
-     certbot
    ];
+
+  #security.acme = {
+  #  acceptTerms = true;
+  #  defaults.email = "admin+acme@foxflower.tech"
+  #  certs."foxflower.tech" = {
+  #    
+  #  }
+  #};
 
   services.transmission = { 
     enable = true; #Enable transmission daemon
@@ -138,7 +146,7 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 6789 8000 9443 5380 80 9091 8096 25565 ];
+  networking.firewall.allowedTCPPorts = [ 6789 8000 9443 5380 80 443 9091 8096 25565 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
