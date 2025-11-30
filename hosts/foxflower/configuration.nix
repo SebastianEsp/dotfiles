@@ -97,6 +97,7 @@
      git
      openssl
      gnumake
+     certbot
    ];
 
   services.transmission = { 
