@@ -14,6 +14,7 @@ gc:
 
 	# garbage collect all unused nix store entries
 	sudo nix store gc --debug
+	nix store gc --debug
 
 optimize:
 	nix-store --optimise
