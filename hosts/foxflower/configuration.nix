@@ -110,6 +110,7 @@
 
   services.transmission = { 
     enable = true; #Enable transmission daemon
+    package = pkgs.transmission_4;
     openRPCPort = true; #Open firewall for RPC
     settings = { #Override default settings
       rpc-bind-address = "0.0.0.0"; #Bind to own IP
