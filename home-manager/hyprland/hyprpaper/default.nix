@@ -1,6 +1,6 @@
-{pkgs, inputs, hyprland, ...}: {
+{pkgs, pkgs-unstable, inputs, hyprland, ...}: {
 
-    home.packages = with pkgs; [
+    home.packages = with pkgs-unstable; [
         hyprpaper
     ];
 
