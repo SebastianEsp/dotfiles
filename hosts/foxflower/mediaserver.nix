@@ -30,7 +30,7 @@
       libva-vdpau-driver
       libvdpau-va-gl
       intel-compute-runtime
-      intel-media-sdk
+      #intel-media-sdk
     ];
   };
 }
