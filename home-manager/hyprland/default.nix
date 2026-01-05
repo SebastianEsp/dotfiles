@@ -59,11 +59,6 @@
         sensitivity = 0.5 
       }
 
-      # HDR support
-      experimental {
-        xx_color_management_v4 = true
-      }
-
       exec-once = xrandr --output DP-6 --primary
       exec-once = hypridle
       exec-once = waybar
