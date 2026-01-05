@@ -121,7 +121,7 @@
   };
 
 
-  hardware.xpadneo.enable = true;
+  #hardware.xpadneo.enable = true;
 
   # Gnome keyring
   services.gnome.gnome-keyring.enable = true;
@@ -163,6 +163,7 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     (callPackage ../../pkgs/sekirofpsunlock {})
+    (callPackage ../../pkgs/xpadneo {})
     sbctl
     wget
     joycond
