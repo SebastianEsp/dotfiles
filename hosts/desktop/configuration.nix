@@ -103,10 +103,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  services.logind.extraConfig = ''
-    # don’t shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
+  services.logind.settings.Login.HandlePowerKey = "ignore";
 
   # Enable bluetooth
   #hardware.bluetooth.enable = true;
@@ -147,7 +144,8 @@
     setuid = true;
   };
 
-  services.transmission = { 
+  services.transmission = {
+    package = pkgs.transmission_4;
     enable = true; #Enable transmission daemon
     openRPCPort = true; #Open firewall for RPC
     settings = { #Override default settings
@@ -159,6 +157,7 @@
   # Gamecube controller support
   services.udev.enable = true;
   services.udev.packages = [ pkgs.dolphin-emu ];
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -177,13 +176,10 @@
     dotnetCorePackages.sdk_9_0
     pkgs.adwaita-icon-theme
     font-awesome
-    (unityhub.override { extraLibs = { ... }: [ harfbuzz ]; })
     dolphin-emu
     libusb1
     udev
   ];
-
-  
 
   xdg.portal = {
     enable = true;
@@ -191,7 +187,7 @@
   };
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.package = pkgs.nix-ld-rs;
+  programs.nix-ld.package = pkgs.nix-ld;
   programs.nix-ld.libraries = with pkgs; [
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages

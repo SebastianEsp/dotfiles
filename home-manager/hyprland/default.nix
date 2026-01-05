@@ -36,7 +36,6 @@
     hyprpolkitagent
     overskride
     pwvucontrol
-    kdePackages.xwaylandvideobridge
   ];
 
   wayland.windowManager.hyprland = {
