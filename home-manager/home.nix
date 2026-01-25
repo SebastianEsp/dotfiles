@@ -73,7 +73,7 @@
 
     rclone
     jq
-    envsubst
+    envsubst 
     vscode
     spotifywm
     discord
