@@ -64,6 +64,7 @@
     chromedriver
     python3
     elixir
+    zed-editor
 
     #Quickshell
     inputs.quickshell.packages.${pkgs.system}.default

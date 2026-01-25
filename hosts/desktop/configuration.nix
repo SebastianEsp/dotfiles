@@ -121,7 +121,7 @@
   };
 
 
-  #hardware.xpadneo.enable = true;
+  hardware.xpadneo.enable = true;
 
   # Gnome keyring
   services.gnome.gnome-keyring.enable = true;
@@ -154,16 +154,34 @@
     };
   };
 
-  # Gamecube controller support
   services.udev.enable = true;
-  services.udev.packages = [ pkgs.dolphin-emu ];
+  services.udev.packages = [ 
+    # Gamecube controller support
+    pkgs.dolphin-emu
+
+    # xpadneo udev fixes for systemd 258
+    (pkgs.writeTextFile {
+        name = "60-xpadneo";
+        text = ''
+            ACTION=="bind", SUBSYSTEM=="hid", DRIVER!="xpadneo", KERNEL=="0005:045E:*", KERNEL=="*:02FD.*|*:02E0.*|*:0B05.*|*:0B13.*|*:0B20.*|*:0B22.*", ATTR{driver/unbind}="%k", ATTR{[drivers/hid:xpadneo]bind}="%k"
+            ACTION!="remove", DRIVERS=="xpadneo", SUBSYSTEM=="input", TAG+="uaccess"
+        '';
+        destination = "/etc/udev/rules.d/60-xpadneo.rules";
+    })
+    (pkgs.writeTextFile {
+        name = "70-xpadneo-disable-hidraw";
+        text = ''
+            ACTION!="remove", DRIVERS=="xpadneo", SUBSYSTEM=="hidraw", MODE:="0000", TAG-="uaccess"
+        '';
+        destination = "/etc/udev/rules.d/70-xpadneo-disable-hidraw.rules";
+    })
+  ];
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     (callPackage ../../pkgs/sekirofpsunlock {})
-    (callPackage ../../pkgs/xpadneo {})
     sbctl
     wget
     joycond
