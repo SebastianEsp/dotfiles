@@ -65,6 +65,7 @@
     python3
     elixir
     zed-editor
+    zig
 
     #Quickshell
     inputs.quickshell.packages.${pkgs.system}.default
@@ -77,6 +78,7 @@
     vscode
     spotifywm
     discord
+    ente-auth
     (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
 
     appimage-run

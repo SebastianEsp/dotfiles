@@ -40,7 +40,7 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
   boot.blacklistedKernelModules = ["hid_logitech_dj" "hid_logitech_hidpp"];
-  #boot.kernelPackages = pkgs-unstable.linuxPackages_6_12;
+  #boot.kernelPackages = pkgs-unstable.linuxPackages_6_18;
   #boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
   #  argsOverride = rec {
@@ -123,6 +123,10 @@
 
   hardware.xpadneo.enable = true;
 
+  # enable appimage support
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   # Gnome keyring
   services.gnome.gnome-keyring.enable = true;
 
@@ -133,7 +137,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+ 
   services.teamviewer.enable = true;
 
   security.wrappers."mount.cifs" = {
@@ -182,6 +186,7 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     (callPackage ../../pkgs/sekirofpsunlock {})
+    (callPackage ../../pkgs/padctl {})
     sbctl
     wget
     joycond

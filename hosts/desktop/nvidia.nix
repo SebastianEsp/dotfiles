@@ -22,8 +22,8 @@
   hardware.nvidia.open = true;
   hardware.nvidia.nvidiaSettings = false;
 
-  hardware.nvidia.package = pkgs-unstable.linuxPackages.nvidiaPackages.latest;
-  #hardware.nvidia.package = pkgs.linuxPackages.nvidiaPackages.latest;
+  #hardware.nvidia.package = pkgs-unstable.linuxPackages.nvidiaPackages.latest;
+  hardware.nvidia.package = pkgs.linuxPackages.nvidiaPackages.latest;
 
   #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
   #  version = "575.51.02";
