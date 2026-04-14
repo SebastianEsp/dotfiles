@@ -19,6 +19,7 @@
     ./nvim
     ./helix
     ./scripts
+    ./padctl
   ];
 
   nixpkgs = {
