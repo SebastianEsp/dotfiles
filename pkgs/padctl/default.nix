@@ -5,7 +5,7 @@ pkgs.stdenv.mkDerivation {
 
     src = pkgs.fetchurl {
         url = "https://github.com/BANANASJIM/padctl/releases/download/v0.1.0/padctl-v0.1.0-x86_64-linux-musl.tar.gz";
-        sha256 = "sha256-e5da277b9887480d85636575f50d76801c659e79b49d6a02b06627fff69ec631";
+        sha256 = "sha256-5done5iHSA2FY2V19Q12gBxlnnm0nWoCsGYn//aexjE=";
     };
 
     phases = "unpackPhase unpackPhaseExport";
