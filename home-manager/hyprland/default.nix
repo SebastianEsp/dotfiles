@@ -61,6 +61,7 @@
 
       exec-once = xrandr --output DP-6 --primary
       exec-once = hypridle
+      exec-once = padctl --config ~/.config/padctl/devices/vader5.toml   
       exec-once = waybar
       exec-once = hyprpaper
       exec-once = [workspace special silent] kitty
@@ -99,7 +100,7 @@
       render {
         direct_scanout = 1
         #cm_auto_hdr = 1
-        cm_fs_passthrough = 1
+        #cm_fs_passthrough = 1
       }
 
       # Keybinds
@@ -178,6 +179,7 @@
       #windowrule = workspace 3, steam
       windowrule = workspace 10, match:title (Discord Updater)
       #windowrule = workspace 9, silent, class:spotify
+      #windowrule = idleinhibit fullscreen, class:.*
     '';
   };
 

@@ -53,8 +53,8 @@
   home.packages = with pkgs; [
     #Gaming
     wowup-cf
-    runelite
     prismlauncher
+    xivlauncher
 
     #Programming
     go

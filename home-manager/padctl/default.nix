@@ -2,6 +2,6 @@
 
 {
   
-  home.file.".config/padctl/devices/vader5.toml".source = ./vader5.toml;
+  home.file.".config/padctl/devices/".source = ./vader5.toml;
 
 }
