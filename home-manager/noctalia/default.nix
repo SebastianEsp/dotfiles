@@ -4,7 +4,7 @@
   programs.noctalia = {
     enable = true;
 
-    settings = { # This may also be a string or path to a .toml file.
+    settings = (builtins.fromTOML (builtins.readFile ./bar.toml)) // {
       theme = {
         mode = "dark";
         source = "builtin";

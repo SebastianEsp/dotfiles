@@ -30,7 +30,9 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("[workspace special silent] kitty")
   hl.exec_cmd("[workspace 1 silent] kitty")
-  hl.exec_cmd("sh ~/start_firefox.sh")
+  hl.exec_cmd("[workspace 2 silent] firefox -P default")
+  hl.exec_cmd("[workspace 10 silent] firefox -P left")
+  hl.exec_cmd("[workspace 9 silent] firefox -P right")
   hl.exec_cmd("[workspace 10 silent] discord --use-gl=desktop")
   hl.exec_cmd("[workspace 9 silent] spotify")
   hl.exec_cmd("swaync")
@@ -59,8 +61,8 @@ hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-sink-volume @DEFAULT_
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_SINK@ toggle"))
 
 -- Volume keyboard
-hl.bind("SUPER + =", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%+"))
-hl.bind("SUPER + -", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%-"))
+hl.bind("SUPER + equal", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%+"))
+hl.bind("SUPER + minus", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_SINK@ 5%-"))
 
 -- Swaync, logout, special workspace, fullscreen, screenshot
 hl.bind("SUPER + n",           hl.dsp.exec_cmd("swaync-client -t -sw"))
