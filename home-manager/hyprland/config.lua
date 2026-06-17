@@ -26,7 +26,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("xrandr --output DP-6 --primary")
   hl.exec_cmd("hypridle")
   hl.exec_cmd("padctl --config ~/.config/padctl/devices/vader5.toml")
-  hl.exec_cmd("waybar")
+  #hl.exec_cmd("waybar")
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("[workspace special silent] kitty")
   hl.exec_cmd("[workspace 1 silent] kitty")
@@ -98,7 +98,7 @@ hl.bind("SUPER + s", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + q", hl.dsp.window.close())
 
 -- Rofi
--- hl.bind("SUPER + space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
+hl.bind("SUPER + space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 -- hl.bind("SUPER + tab",   hl.dsp.exec_cmd("~/rofilaunch.sh --window"))
 
 -- Workspace rules

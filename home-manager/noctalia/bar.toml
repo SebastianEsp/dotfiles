@@ -24,10 +24,10 @@ radius_top_left    = 12
 radius_top_right   = 12
 radius_bottom_left = 12
 radius_bottom_right = 12
-margin_ends        = 180         # inset from each end of the bar along its main axis
+margin_ends        = 20         # inset from each end of the bar along its main axis
 margin_edge        = 10          # distance from the nearest screen edge (positive values float the bar)
 padding            = 14          # main-axis padding from bar edges to start/end widget sections
-widget_spacing     = 6           # gap between widgets within a section
+widget_spacing     = 20           # gap between widgets within a section
 scale              = 1.0         # content scale multiplier for icons and text
 font_weight        = "regular"   # "regular" | "bold" — primary label weight for bar widgets
 font_family        = ""          # typeface for this bar's widgets; empty inherits the global font
@@ -42,7 +42,7 @@ capsule_opacity    = 1.0
 
 start  = ["workspaces", "cpu", "temp", "ram", "gpu", "gpu-temp", "disk", "wifi-download"]
 center = ["clock-12h"]
-end    = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session"]
+end    = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "tray"]
 
 [widget.clock-12h]
 type   = "clock"

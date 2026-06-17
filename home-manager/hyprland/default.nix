@@ -1,6 +1,6 @@
 {pkgs, pkgs-unstable, inputs, hyprland, ...}: {
   imports = [
-    ./waybar
+    #./waybar
     #./wlogout
     #./rofi
     ./hyprpaper
