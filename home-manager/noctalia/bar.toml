@@ -83,3 +83,7 @@ path = "/"
 type      = "sysmon"
 stat      = "net_rx"
 interface = "wlan0"
+
+[widget.media]
+type         = "media"
+title_scroll = "always"

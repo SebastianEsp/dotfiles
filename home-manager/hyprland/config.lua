@@ -97,8 +97,8 @@ hl.bind("SUPER + s", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + q", hl.dsp.window.close())
 
 -- Rofi
-hl.bind("SUPER + space", hl.dsp.exec_cmd("~/rofilaunch.sh"))
-hl.bind("SUPER + tab",   hl.dsp.exec_cmd("~/rofilaunch.sh --window"))
+-- hl.bind("SUPER + space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
+-- hl.bind("SUPER + tab",   hl.dsp.exec_cmd("~/rofilaunch.sh --window"))
 
 -- Workspace rules
 hl.workspace_rule({ workspace = "1",  monitor = "DP-3", default = true })

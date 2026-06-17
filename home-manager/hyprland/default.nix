@@ -2,7 +2,7 @@
   imports = [
     ./waybar
     ./wlogout
-    ./rofi
+    #./rofi
     ./hyprpaper
     ./hypridle
   ];
