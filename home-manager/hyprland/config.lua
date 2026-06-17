@@ -66,7 +66,8 @@ hl.bind("SUPER + minus", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_SINK@
 
 -- Swaync, logout, special workspace, fullscreen, screenshot
 hl.bind("SUPER + n",           hl.dsp.exec_cmd("swaync-client -t -sw"))
-hl.bind("SUPER + l",           hl.dsp.exec_cmd("~/logoutlaunch.sh"))
+-- hl.bind("SUPER + l",           hl.dsp.exec_cmd("~/logoutlaunch.sh"))
+hl.bind("SUPER + l",           hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind("SUPER + SHIFT + Return", hl.dsp.workspace.toggle_special())
 hl.bind("SUPER + f",           hl.dsp.window.fullscreen())
 hl.bind("PRINT",               hl.dsp.exec_cmd("hyprshot -m region"))
