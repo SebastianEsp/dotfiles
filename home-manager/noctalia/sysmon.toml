@@ -1,0 +1,8 @@
+[system.monitor]
+enabled = true                      # sample CPU, memory, network, load, temperature, GPU VRAM, and disk statistics
+cpu_temp_sensor_path = ""           # exact temp*_input path for CPU temperature override; empty = auto
+cpu_poll_seconds = 2.0              # CPU usage, CPU temperature, and load average
+gpu_poll_seconds = 5.0              # GPU temperature and VRAM usage (0 = disabled by default)
+memory_poll_seconds = 2.0           # RAM usage
+network_poll_seconds = 3.0          # network throughput
+disk_poll_seconds = 10.0            # disk usage and swap usage
