@@ -22,15 +22,15 @@
   hardware.nvidia.open = true;
   hardware.nvidia.nvidiaSettings = false;
 
-  hardware.nvidia.package = pkgs-unstable.linuxPackages.nvidiaPackages.latest;
+  #hardware.nvidia.package = pkgs-unstable.linuxPackages.nvidiaPackages.latest;
   #hardware.nvidia.package = pkgs.linuxPackages.nvidiaPackages.latest;
 
-  #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-  #  version = "575.51.02";
-  #  sha256_64bit = "sha256-XZ0N8ISmoAC8p28DrGHk/YN1rJsInJ2dZNL8O+Tuaa0=";
-  #  sha256_aarch64 = "sha256-NNeQU9sPfH1sq3d5RUq1MWT6+7mTo1SpVfzabYSVMVI=";
-  #  openSha256 = "sha256-NQg+QDm9Gt+5bapbUO96UFsPnz1hG1dtEwT/g/vKHkw=";
-  #  settingsSha256 = "sha256-6n9mVkEL39wJj5FB1HBml7TTJhNAhS/j5hqpNGFQE4w=";
-  #  persistencedSha256 = "sha256-dgmco+clEIY8bedxHC4wp+fH5JavTzyI1BI8BxoeJJI=";
-  #};
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    version = "610.43.02";
+    sha256_64bit = "sha256:0qvllxnb20arjhw3bxdz0hw521di9ib75hldzx97gpscpdaa0d1h";
+    sha256_aarch64 = "sha256:0qvllxnb20arjhw3bxdz0hw521di9ib75hldzx97gpscpdaa0d1h";
+    openSha256 = "sha256-hP5NVZZ4vGsACHLmUDKq4uckpd/kn1GxCSYnnJfAuBs=";
+    settingsSha256 = "sha256-0YAhufRgjDW+uR+kjaTb154fibpcDw8QowfrucoZsKE=";
+    persistencedSha256 = "sha256:0nd0bf2s9b2ic8a0rcscddasddkryx2qf6mx4861bv44wblm513z";
+  };
 }

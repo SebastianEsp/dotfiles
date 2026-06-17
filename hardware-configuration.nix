@@ -9,9 +9,10 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "nvidia" ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [ "config.boot.kernelPackages.nvidia_x11" ];
+  boot.kernelParams = [ "module_blacklist=amdgpu" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/eede813d-5f03-4da3-82a8-cc6100181bf1";

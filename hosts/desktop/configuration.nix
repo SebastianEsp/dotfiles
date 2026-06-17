@@ -40,18 +40,18 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelModules = [ "uhid" "uinput" ];
   boot.blacklistedKernelModules = ["hid_logitech_dj" "hid_logitech_hidpp"];
-  boot.kernelPackages = pkgs-unstable.linuxPackages_6_18;
+  #boot.kernelPackages = pkgs-unstable.linuxPackages_6_18;
   #boot.kernelPackages = pkgs.linuxPackages_latest;
-  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
-  #  argsOverride = rec {
-  #  	src = pkgs.fetchurl {
-  #      url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-  #      sha256 = "sha256-nRrjmi6gJNmWRvZF/bu/pFRVdxMromQ+Ad914yJG1sc=";
-  #    };
-  #    version = "6.12.21";
-  #    modDirVersion = "6.12.21";
-  #  };
-  #});
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
+    argsOverride = rec {
+    	src = pkgs.fetchurl {
+        url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+        sha256 = "sha256-zei/Zzm+Sgd3/tu7pTMLgYjFVoDEWpIqTfoonL7G8YU=";
+      };
+      version = "6.19.14";
+      modDirVersion = "6.19.14";
+    };
+  });
 
   #boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPatches = lib.singleton {

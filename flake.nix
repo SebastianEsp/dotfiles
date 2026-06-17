@@ -3,10 +3,9 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -26,13 +25,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
-    quickshell = {
-      # add ?ref=<tag> to track a tag
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-
-      # THIS IS IMPORTANT
-      # Mismatched system dependencies will lead to crashes and other issues.
+    noctalia = {
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -44,7 +38,7 @@
     home-manager,
     hyprland,
     lanzaboote,
-    quickshell,
+    noctalia,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -88,7 +82,7 @@
             config.allowUnfree = true;
           };
         };
-        
+
         modules = [
           # > Our main nixos configuration file <
           ./hosts/desktop/configuration.nix
@@ -111,7 +105,7 @@
             config.allowUnfree = true;
           };
         };
-        
+
         modules = [
           # > Our main nixos configuration file <
           ./hosts/foxflower/configuration.nix
@@ -135,6 +129,7 @@
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/home.nix
+          inputs.noctalia.homeModules.default
         ];
       };
     };

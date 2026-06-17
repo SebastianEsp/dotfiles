@@ -20,6 +20,7 @@
     ./helix
     ./scripts
     ./padctl
+    ./noctalia
   ];
 
   nixpkgs = {
@@ -43,7 +44,7 @@
     homeDirectory = "/home/sebastian";
   };
 
-  #programs.firefox.package = 
+  #programs.firefox.package =
   programs.java = { enable = true; package = (pkgs.jdk21.override { enableJavaFX = true; }); };
   #quickshell = inputs.quickshell.packages.${pkgs.system}.default;
 
@@ -67,15 +68,11 @@
     elixir
     zed-editor
     zig
-
-    #Quickshell
-    inputs.quickshell.packages.${pkgs.system}.default
-
-    nomachine-client
+    claude-code
 
     rclone
     jq
-    envsubst 
+    envsubst
     vscode
     spotifywm
     discord

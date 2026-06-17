@@ -78,13 +78,13 @@
       exec-once = sh ~/wallpaper_randomizer.sh
 
       # Monitor rules
-      monitor = DP-5, 1920x1080, 4520x0, 1, transform, 1
-      #monitor = DP-6, 3440x1440@164, 1080x52, 1, bitdepth, 10, cm, hdr, sdrbrightness, 1.2, sdrsaturation, 0.98, vrr, 2
+      monitor = DP-2, 1920x1080, 4520x0, 1, transform, 1
+      #monitor = DP-3, 3440x1440@164, 1080x52, 1, bitdepth, 10, cm, hdr, sdrbrightness, 1.2, sdrsaturation, 0.98, vrr, 2
       monitor = DP-4, 1920x1080@120, 0x0, 1, transform, 1
       monitor = , preferred, auto, 1 #default rule
 
       monitorv2 {
-        output = DP-6
+        output = DP-3
         mode = 3440x1440@164
         position = 1080x52
         scale = 1
@@ -99,9 +99,13 @@
 
       render {
         direct_scanout = 1
-        #cm_auto_hdr = 1
+        cm_auto_hdr = 1
         #cm_fs_passthrough = 1
       }
+
+      cursor {
+        use_cpu_buffer = true
+      } 
 
       # Keybinds
       bind = SUPER, Return, exec, kitty
@@ -168,16 +172,17 @@
       bind = SUPER, tab, exec, ~/rofilaunch.sh --window 
 
       # Workspace rules
-      workspace = 1, monitor:DP-6, default:true `
-      workspace = 2, monitor:DP-6
-      workspace = 3, monitor:DP-6
-      workspace = 9, monitor:DP-5, gapsout:0, default:true, layoutopt:orientation:top
+      workspace = 1, monitor:DP-3, default:true `
+      workspace = 2, monitor:DP-3
+      workspace = 3, monitor:DP-3
+      workspace = 9, monitor:DP-2, gapsout:0, default:true, layoutopt:orientation:top
       workspace = 10, monitor:DP-4, gapsout:0, default:true, layoutopt:orientation:top
 
       # Window rules
       #windowrule = workspace 1, kitty
       #windowrule = workspace 3, steam
       windowrule = workspace 10, match:title (Discord Updater)
+      windowrule = workspace 10, match:class discord
       #windowrule = workspace 9, silent, class:spotify
       #windowrule = idleinhibit fullscreen, class:.*
     '';

@@ -9,7 +9,7 @@
     "modules-left": ["custom/icon", "hyprland/workspaces", "load", "memory", "disk", "temperature"],
     "modules-center": ["clock"],
     "modules-right": ["custom/playerctl", "wireplumber", "bluetooth", "custom/setdisplay", "tray"],
-    "output": "DP-6",
+    "output": "DP-3",
 
 
     //***************************
@@ -88,7 +88,7 @@
 
     "custom/setdisplay": {
         "format": "󰍹",
-        "on-click": "xrandr --output DP-6 --primary"
+        "on-click": "xrandr --output DP-3 --primary"
     },
 
     "bluetooth": {
