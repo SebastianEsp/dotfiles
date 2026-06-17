@@ -42,7 +42,7 @@ capsule_opacity    = 1.0
 
 start  = ["workspaces", "cpu", "temp", "ram", "gpu", "gpu-temp", "disk", "wifi-download"]
 center = ["clock-12h"]
-end    = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "tray"]
+end    = ["media", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "tray"]
 
 [widget.clock-12h]
 type   = "clock"
@@ -87,3 +87,8 @@ interface = "wlan0"
 [widget.media]
 type         = "media"
 title_scroll = "always"
+
+[widget.tray]
+hidden = ["network", "spotify"]
+drawer = true
+drawer_columns = 3
