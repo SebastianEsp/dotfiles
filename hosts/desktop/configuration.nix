@@ -84,7 +84,9 @@
   #time.timeZone = "Europe/Helsinki";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_DK.UTF-8";
+  #i18n.defaultLocale = "en_DK.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocales = [ "en_DK.UTF-8/UTF-8" ];
 
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
   environment.variables.MOZ_ENABLE_WAYLAND = "0";
@@ -137,7 +139,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
- 
+
   services.teamviewer.enable = true;
 
   security.wrappers."mount.cifs" = {
@@ -159,7 +161,7 @@
   };
 
   services.udev.enable = true;
-  services.udev.packages = [ 
+  services.udev.packages = [
     # Gamecube controller support
     pkgs.dolphin-emu
 
@@ -180,7 +182,7 @@
         destination = "/etc/udev/rules.d/70-xpadneo-disable-hidraw.rules";
     })
   ];
-  
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
