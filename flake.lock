@@ -259,11 +259,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1781704531,
-        "narHash": "sha256-376vBgX1S5J8qnQo+yIiHkkY1u7sZK3r8zE/Q85tlPM=",
+        "lastModified": 1781803280,
+        "narHash": "sha256-LvjQLSOAdnJAh1ShfljgZDJE49xhvyDlcIDrhh0Wzk8=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "2d190ba79aeec55174bda98f6202634c97370bc6",
+        "rev": "7a75ce5f209d8142c40dfe6dd8bb03749987e11d",
         "type": "github"
       },
       "original": {
@@ -665,14 +665,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1781712374,
-        "narHash": "sha256-c/jxhFh8MLjFU5uP/juVyNSgC7aMDHccsQGH0cFVBhw=",
-        "path": "/home/sebastian/Documents/work/noctalia",
-        "type": "path"
+        "lastModified": 1781881886,
+        "narHash": "sha256-TaiCsK2yYhcAzkblq2ONWdNuW7d9fDWT3EQ+mqm5l1M=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "rev": "f977911fe240216d97b84b920f89504e80dca9a6",
+        "type": "github"
       },
       "original": {
-        "path": "/home/sebastian/Documents/work/noctalia",
-        "type": "path"
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "type": "github"
       }
     },
     "pre-commit-hooks": {

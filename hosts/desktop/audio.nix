@@ -46,5 +46,5 @@
     };
   };
 
-  services.playerctld.enable = true;
+  #services.playerctld.enable = true;
 }

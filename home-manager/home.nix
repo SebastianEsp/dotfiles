@@ -69,6 +69,7 @@
     zed-editor
     zig
     claude-code
+    dbus
 
     rclone
     jq

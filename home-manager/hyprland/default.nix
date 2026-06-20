@@ -40,6 +40,33 @@
 
   xdg.configFile."hypr/config.lua".source = ./config.lua;
 
+  systemd.user.services.firefox-graceful-stop = {
+    Unit = {
+      Description = "Gracefully stop Firefox on graphical session end";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+      ExecStart = "${pkgs.coreutils}/bin/true";
+      ExecStop = let
+        stopScript = pkgs.writeShellScript "firefox-graceful-stop" ''
+          ${pkgs.procps}/bin/pkill --signal SIGTERM -x firefox || true
+          for i in $(${pkgs.coreutils}/bin/seq 1 30); do
+            ${pkgs.procps}/bin/pgrep -x firefox > /dev/null 2>&1 || exit 0
+            ${pkgs.coreutils}/bin/sleep 0.5
+          done
+          ${pkgs.procps}/bin/pkill --signal SIGKILL -x firefox || true
+        '';
+      in "${stopScript}";
+      TimeoutStopSec = 20;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   wayland.windowManager.hyprland = {
 
     enable = true;

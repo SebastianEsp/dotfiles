@@ -87,6 +87,8 @@ interface = "wlan0"
 [widget.media]
 type         = "media"
 title_scroll = "always"
+playback_time = true
+max_length   = 300
 
 [widget.tray]
 hidden = ["network", "spotify"]
