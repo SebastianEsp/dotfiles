@@ -1,7 +1,7 @@
 version: "2.3"
 services:
   emby:
-    image: emby/embyserver:4.9.1.90
+    image: emby/embyserver:4.10.0.17
     container_name: embyserver
     #runtime: nvidia # Expose NVIDIA GPUs
     network_mode: host # Enable DLNA and Wake-on-Lan
