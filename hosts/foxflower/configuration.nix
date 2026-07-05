@@ -51,7 +51,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "dotnet-sdk-6.0.428"
   ];
-  
+
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -82,7 +82,7 @@
   # };
 
   users.groups.media = {};
-  users.groups.media.members = [ "sonarr" "radarr" "jellyfin" "nzbget" ];  
+  users.groups.media.members = [ "sonarr" "radarr" "jellyfin" "nzbget" ];
   users.groups.nzbget.members = [ "sonarr" "radarr" "jellyfin" "nzbget" ];
 
   # List packages installed in system profile. To search, run:
@@ -104,11 +104,11 @@
   #  acceptTerms = true;
   #  defaults.email = "admin+acme@foxflower.tech"
   #  certs."foxflower.tech" = {
-  #    
+  #
   #  }
   #};
 
-  services.transmission = { 
+  services.transmission = {
     enable = true; #Enable transmission daemon
     package = pkgs.transmission_4;
     openRPCPort = true; #Open firewall for RPC
@@ -121,7 +121,7 @@
   # Docker
   virtualisation.docker.enable = true;
   users.extraGroups.docker.members = [ "root" ];
-  
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -142,12 +142,12 @@
       AllowUsers = [ "root" ];
       UseDns = true;
       X11Forwarding = true;
-      PermitRootLogin = "yes";  
+      PermitRootLogin = "yes";
     };
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 6789 8000 8080 9443 5380 80 443 9091 8096 25565 ];
+  networking.firewall.allowedTCPPorts = [ 6789 8000 8080 9443 5380 80 443 9091 8096 25565 9001 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
