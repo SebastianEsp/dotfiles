@@ -1,6 +1,6 @@
 services:
   ddss1:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server:java8
     container_name: mc-ddss1
     tty: true
     stdin_open: true
