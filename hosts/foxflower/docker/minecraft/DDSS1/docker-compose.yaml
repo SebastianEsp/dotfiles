@@ -1,0 +1,25 @@
+services:
+  ddss1:
+    image: itzg/minecraft-server:latest
+    container_name: mc-ddss1
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: AUTO_CURSEFORGE
+      CF_SERVER_MOD: /serverpack.zip
+      VERSION: "1.12.2"
+      MEMORY: 8G
+      JVM_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200"
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      DIFFICULTY: normal
+      MAX_PLAYERS: 10
+      VIEW_DISTANCE: 8
+      MOTD: "DDSS1 - Dungeons Dragons and Space Shuttles"
+      TZ: Europe/Copenhagen
+    volumes:
+      - /docker/minecraft/ddss1:/data
+      - ./serverpack.zip:/serverpack.zip:ro
+    restart: unless-stopped
