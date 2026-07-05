@@ -8,10 +8,10 @@ services:
       - "25565:25565"
     environment:
       EULA: "TRUE"
-      TYPE: AUTO_CURSEFORGE
-      CF_SLUG: dungeons-dragons-and-space-shuttles
-      CF_SERVER_MOD: /serverpack.zip
+      TYPE: FORGE
       VERSION: "1.12.2"
+      # Set this to the Forge version from the server pack (see setup instructions)
+      FORGEVERSION: "14.23.5.2847"
       MEMORY: 8G
       JVM_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200"
       OVERRIDE_SERVER_PROPERTIES: "true"
@@ -22,5 +22,4 @@ services:
       TZ: Europe/Copenhagen
     volumes:
       - /docker/minecraft/ddss1:/data
-      - ./serverpack.zip:/serverpack.zip:ro
     restart: unless-stopped
