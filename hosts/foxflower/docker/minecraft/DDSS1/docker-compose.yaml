@@ -9,6 +9,7 @@ services:
     environment:
       EULA: "TRUE"
       TYPE: AUTO_CURSEFORGE
+      CF_SLUG: dungeons-dragons-and-space-shuttles
       CF_SERVER_MOD: /serverpack.zip
       VERSION: "1.12.2"
       MEMORY: 8G
