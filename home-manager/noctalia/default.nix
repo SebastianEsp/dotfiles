@@ -13,6 +13,10 @@
         builtin = "Catppuccin";
       };
 
+      lockscreen = {
+        enabled = false;
+      };
+
       wallpaper = {
         enabled = true;
         default.path = "/path/to/wallpapers/wallpaper.png";
