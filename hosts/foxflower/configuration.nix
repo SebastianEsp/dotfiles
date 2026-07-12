@@ -108,7 +108,7 @@
   #  }
   #};
 
-  services.haveged.enable = true
+  services.haveged.enable = true;
 
   services.transmission = {
     enable = true; #Enable transmission daemon
