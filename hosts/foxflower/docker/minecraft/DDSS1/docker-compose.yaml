@@ -22,4 +22,4 @@ services:
       TZ: Europe/Copenhagen
     volumes:
       - /docker/minecraft/ddss1:/data
-    restart: unless-stopped
+    restart: on-failure

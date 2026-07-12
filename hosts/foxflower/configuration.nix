@@ -108,6 +108,8 @@
   #  }
   #};
 
+  services.haveged.enable = true
+
   services.transmission = {
     enable = true; #Enable transmission daemon
     package = pkgs.transmission_4;
