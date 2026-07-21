@@ -70,6 +70,9 @@
     zig
     claude-code
     dbus
+    pkgs-unstable.odin
+    pkgs-unstable.ols
+    windows.mingw_w64
 
     rclone
     jq
