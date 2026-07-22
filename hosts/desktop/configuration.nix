@@ -222,7 +222,11 @@
 
   programs.gamemode.enable = true;
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/home/sebastian/dotfiles/flake.nix#nixos";
+    flags = [ "--update-input" "nixpkgs" ];
+  };
   system.autoUpgrade.allowReboot = false;
 
   system.stateVersion = "24.05";
