@@ -36,6 +36,7 @@
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
+      allowUnsupportedSystem = true;
     };
   };
 
@@ -73,6 +74,7 @@
     pkgs-unstable.odin
     pkgs-unstable.ols
     windows.mingw_w64
+    pkgsCross.mingw32.buildPackages.gcc
 
     rclone
     jq
