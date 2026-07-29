@@ -73,8 +73,6 @@
     dbus
     pkgs-unstable.odin
     pkgs-unstable.ols
-    windows.mingw_w64
-    pkgsCross.mingw32.buildPackages.gcc
 
     rclone
     jq
@@ -86,6 +84,7 @@
     (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
 
     appimage-run
+    ppsspp-sdl-wayland
     #antimicrox
     blender
     killall

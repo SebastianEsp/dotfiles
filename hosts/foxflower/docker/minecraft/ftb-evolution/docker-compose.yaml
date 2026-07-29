@@ -1,0 +1,31 @@
+services:
+  ftb-evolution:
+    image: itzg/minecraft-server:java21
+    container_name: mc-ftb-evolution
+    tty: true
+    stdin_open: true
+    ports:
+      - "25566:25565"
+    environment:
+      EULA: "TRUE"
+      # FTBA auto-downloads the modpack and installs the matching NeoForge version,
+      # so VERSION / NEOFORGE_VERSION must NOT be set here.
+      TYPE: FTBA
+      # https://www.feed-the-beast.com/modpacks/125-ftb-evolution
+      FTB_MODPACK_ID: "125"
+      # Pin the version so the server doesn't silently update out from under clients.
+      # Version 1.40.0 -> version id 100436. Bump this to upgrade, then recreate the
+      # container. Remove this line entirely to always track the latest release.
+      FTB_MODPACK_VERSION_ID: "100436"
+      MEMORY: 8G
+      JVM_OPTS: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200"
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      WHITELIST: |
+        zebrafisk
+      OPS: |
+        zebrafisk
+      MOTD: "FTB - Evolution"
+      TZ: Europe/Copenhagen
+    volumes:
+      - /docker/minecraft/ftb-evolution:/data
+    restart: on-failure
