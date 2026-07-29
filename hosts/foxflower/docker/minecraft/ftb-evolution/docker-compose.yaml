@@ -22,6 +22,8 @@ services:
       OVERRIDE_SERVER_PROPERTIES: "true"
       WHITELIST: |
         zebrafisk
+        Lillemix
+        Quitra
       OPS: |
         zebrafisk
       MOTD: "FTB - Evolution"
