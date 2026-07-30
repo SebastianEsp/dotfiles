@@ -26,6 +26,7 @@ services:
         Quitra
         Sjaline
         WarmintCrew
+        darkmozz
       OPS: |
         zebrafisk
       MOTD: "FTB - Evolution"
