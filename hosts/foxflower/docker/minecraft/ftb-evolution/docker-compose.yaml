@@ -24,6 +24,8 @@ services:
         zebrafisk
         Lillemix
         Quitra
+        Sjaline
+        WarmintCrew
       OPS: |
         zebrafisk
       MOTD: "FTB - Evolution"
