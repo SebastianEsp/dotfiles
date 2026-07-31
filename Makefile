@@ -6,6 +6,10 @@ home:
 rebuild:
 	nix --extra-experimental-features nix-command --extra-experimental-features flakes flake update
 	sudo nixos-rebuild switch --flake .\#$$(hostname)
+	@if [ "$$(hostname)" = "foxflower" ]; then \
+		echo "==> foxflower: restarting docker to clear stale containerd shims"; \
+		sudo systemctl restart docker; \
+	fi
 
 gc:
 
