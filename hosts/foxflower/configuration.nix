@@ -136,6 +136,14 @@
 
   # List services that you want to enable:
 
+  # Use the dedicated GitHub deploy key for all SSH to github.com, so git
+  # commands don't need GIT_SSH_COMMAND="ssh -i /root/.ssh/github".
+  programs.ssh.extraConfig = ''
+    Host github.com
+      IdentityFile /root/.ssh/github
+      IdentitiesOnly yes
+  '';
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
