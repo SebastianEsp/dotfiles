@@ -45,8 +45,8 @@
       SMTP_FROM = "mail@foxflower.tech";
       SMTP_FROM_NAME = "foxflower.tech Bitwarden server";
 
-      SSO_ENABLED = true
-      SSO_AUTHORITY = "https://authentik.foxflower.tech/application/o/vaultwarden/"
+      SSO_ENABLED = true;
+      SSO_AUTHORITY = "https://authentik.foxflower.tech/application/o/vaultwarden/";
     };
   };
 }
