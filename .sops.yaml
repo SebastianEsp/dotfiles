@@ -12,9 +12,14 @@ keys:
   #   then replace the placeholder below with the printed age1... value.
   - &host_foxflower age1zu5pcrygs0ucjwuee73gtdt3m952d4l3vhq04es2gytpqcswjp5qvc78e3
 
+  # Cold-storage recovery key — private key kept OFFLINE (paper / safe), never on a
+  # networked machine. Guarantees decryption even if both admin and host keys are lost.
+  - &recovery_coldstorage age1thyafw66838j08t3deawnh0s0lhvwzdey5nryhmxt5hlfmle9ssqjvqz67
+
 creation_rules:
   - path_regex: hosts/foxflower/secrets/[^/]+\.(yaml|json|env)$
     key_groups:
       - age:
           - *admin_sebastian
           - *host_foxflower
+          - *recovery_coldstorage

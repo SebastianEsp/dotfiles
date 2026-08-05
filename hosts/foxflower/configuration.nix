@@ -12,6 +12,7 @@
       #./nginx.nix
       ./traefik.nix
       ./vaultwarden.nix
+      ./vaultwarden-backup-sync.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
