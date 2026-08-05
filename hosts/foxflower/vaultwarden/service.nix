@@ -1,13 +1,14 @@
 { config, ... }: {
   # --- Secrets (managed with sops-nix) ---------------------------------------
-  # Encrypted values live in ./secrets/vaultwarden.yaml and are decrypted at
-  # activation time using foxflower's SSH host key. Create/edit them with:
-  #     sops hosts/foxflower/secrets/vaultwarden.yaml
-  sops.secrets."vaultwarden/smtp_username".sopsFile = ./secrets/vaultwarden.yaml;
-  sops.secrets."vaultwarden/smtp_password".sopsFile = ./secrets/vaultwarden.yaml;
-  sops.secrets."vaultwarden/admin_token".sopsFile = ./secrets/vaultwarden.yaml;
-  sops.secrets."vaultwarden/sso_client_id".sopsFile = ./secrets/vaultwarden.yaml;
-  sops.secrets."vaultwarden/sso_client_secret".sopsFile = ./secrets/vaultwarden.yaml;
+  # Encrypted values live in ./secrets.yaml and are decrypted at activation time
+  # using foxflower's SSH host key. Create/edit them with:
+  #     sops hosts/foxflower/vaultwarden/secrets.yaml
+  # See ./README.md for the full backup/restore and recovery-key details.
+  sops.secrets."vaultwarden/smtp_username".sopsFile = ./secrets.yaml;
+  sops.secrets."vaultwarden/smtp_password".sopsFile = ./secrets.yaml;
+  sops.secrets."vaultwarden/admin_token".sopsFile = ./secrets.yaml;
+  sops.secrets."vaultwarden/sso_client_id".sopsFile = ./secrets.yaml;
+  sops.secrets."vaultwarden/sso_client_secret".sopsFile = ./secrets.yaml;
 
   # Render the runtime env file from the decrypted secrets. This file lives on
   # tmpfs (/run/secrets/rendered/...), never in the world-readable Nix store.

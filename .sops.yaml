@@ -17,7 +17,7 @@ keys:
   - &recovery_coldstorage age1thyafw66838j08t3deawnh0s0lhvwzdey5nryhmxt5hlfmle9ssqjvqz67
 
 creation_rules:
-  - path_regex: hosts/foxflower/secrets/[^/]+\.(yaml|json|env)$
+  - path_regex: hosts/foxflower/vaultwarden/secrets\.yaml$
     key_groups:
       - age:
           - *admin_sebastian

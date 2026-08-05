@@ -11,8 +11,7 @@
       ./mediaserver.nix
       #./nginx.nix
       ./traefik.nix
-      ./vaultwarden.nix
-      ./vaultwarden-backup-sync.nix
+      ./vaultwarden
     ];
 
   nixpkgs.config.allowUnfree = true;

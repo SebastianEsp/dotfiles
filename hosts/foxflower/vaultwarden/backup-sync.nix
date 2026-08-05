@@ -38,10 +38,10 @@ let
 in {
   # The rclone remote definition (Google Drive OAuth token + crypt passwords)
   # is sensitive, so it lives in the encrypted secrets file. Add it with:
-  #     sops hosts/foxflower/secrets/vaultwarden.yaml
+  #     sops hosts/foxflower/vaultwarden/secrets.yaml
   # under:  vaultwarden.rclone_conf: |  (the full rclone.conf contents)
   sops.secrets."vaultwarden/rclone_conf" = {
-    sopsFile = ./secrets/vaultwarden.yaml;
+    sopsFile = ./secrets.yaml;
     owner = "vaultwarden";
     group = "vaultwarden";
     mode = "0400";
