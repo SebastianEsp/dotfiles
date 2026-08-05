@@ -13,6 +13,7 @@
       ./traefik.nix
       ./vaultwarden
       ./mealie
+      ./beszel
     ];
 
   nixpkgs.config.allowUnfree = true;

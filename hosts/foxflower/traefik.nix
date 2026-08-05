@@ -189,6 +189,21 @@
         }];
       };
 
+      http.routers.beszel = {
+        rule = "Host(`beszel.foxflower.tech`)";
+        entrypoints = [ "websecure" ];
+        service = "beszel";
+        tls = {
+          certResolver = "letsencrypt";
+       	  domains = ["beszel.foxflower.tech"];
+        };
+      };
+      http.services.beszel = {
+        loadBalancer.servers = [{
+          url = "http://localhost:3002";
+        }];
+      };
+
       http.middlewares = {
         basic-auth = {
           basicAuth = {
