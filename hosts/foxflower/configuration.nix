@@ -12,6 +12,7 @@
       #./nginx.nix
       ./traefik.nix
       ./vaultwarden
+      ./mealie
     ];
 
   nixpkgs.config.allowUnfree = true;
