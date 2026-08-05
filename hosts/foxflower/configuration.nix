@@ -11,6 +11,7 @@
       ./mediaserver.nix
       #./nginx.nix
       ./traefik.nix
+      ./vaultwarden.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -149,7 +150,7 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 6789 8000 8080 9443 5380 80 443 9091 8096 25565 25566 9001 ];
+  networking.firewall.allowedTCPPorts = [ 6789 8000 8080 9443 5380 80 443 9091 8096 25565 25566 9001 587 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

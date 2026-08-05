@@ -42,7 +42,7 @@
     };
 
     dynamicConfigOptions = {
-      
+
       http.routers.foxflower = {
         rule = "Host(`foxflower.tech`)";
         entrypoints = [ "websecure" ];
@@ -158,7 +158,21 @@
           url = "http://localhost:7000";
         }];
       };
-      
+
+      http.routers.vaultwarden = {
+        rule = "Host(`vaultwarden.foxflower.tech`)";
+        entrypoints = [ "websecure" ];
+        service = "vaultwarden";
+        tls = {
+          certResolver = "letsencrypt";
+       	  domains = ["vaultwarden.foxflower.tech"];
+        };
+      };
+      http.services.vaultwarden = {
+        loadBalancer.servers = [{
+          url = "http://localhost:8222";
+        }];
+      };
 
       http.middlewares = {
         basic-auth = {

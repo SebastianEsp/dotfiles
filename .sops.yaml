@@ -1,0 +1,20 @@
+# sops-nix encryption rules.
+# Lists which age recipients can decrypt each secret file. When you run
+# `sops <file>`, sops encrypts to every key in the matching creation_rule.
+keys:
+  # Admin key (this workstation) — used to CREATE and EDIT secrets.
+  #   Private key: ~/.config/sops/age/keys.txt
+  - &admin_sebastian age10g0grseyf244wedprq8ywcet0nw8yqvh69faay9s2f2dnw6glv7qtddf0n
+
+  # foxflower host key — used to DECRYPT at activation time on the server.
+  #   Get it by running THIS on foxflower:
+  #     nix shell nixpkgs#ssh-to-age -c ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub
+  #   then replace the placeholder below with the printed age1... value.
+  - &host_foxflower age1zu5pcrygs0ucjwuee73gtdt3m952d4l3vhq04es2gytpqcswjp5qvc78e3
+
+creation_rules:
+  - path_regex: hosts/foxflower/secrets/[^/]+\.(yaml|json|env)$
+    key_groups:
+      - age:
+          - *admin_sebastian
+          - *host_foxflower
