@@ -6,6 +6,8 @@
   sops.secrets."vaultwarden/smtp_username".sopsFile = ./secrets/vaultwarden.yaml;
   sops.secrets."vaultwarden/smtp_password".sopsFile = ./secrets/vaultwarden.yaml;
   sops.secrets."vaultwarden/admin_token".sopsFile = ./secrets/vaultwarden.yaml;
+  sops.secrets."vaultwarden/sso_client_id".sopsFile = ./secrets/vaultwarden.yaml;
+  sops.secrets."vaultwarden/sso_client_secret".sopsFile = ./secrets/vaultwarden.yaml;
 
   # Render the runtime env file from the decrypted secrets. This file lives on
   # tmpfs (/run/secrets/rendered/...), never in the world-readable Nix store.
