@@ -14,6 +14,8 @@
       SMTP_USERNAME=${config.sops.placeholder."vaultwarden/smtp_username"}
       SMTP_PASSWORD=${config.sops.placeholder."vaultwarden/smtp_password"}
       ADMIN_TOKEN=${config.sops.placeholder."vaultwarden/admin_token"}
+      SSO_CLIENT_ID=${config.sops.placeholder."vaultwarden/sso_client_id"}
+      SSO_CLIENT_SECRET=${config.sops.placeholder."vaultwarden/sso_client_secret"}
     '';
     # Restart vaultwarden automatically when a secret changes.
     restartUnits = [ "vaultwarden.service" ];
@@ -42,6 +44,9 @@
 
       SMTP_FROM = "mail@foxflower.tech";
       SMTP_FROM_NAME = "foxflower.tech Bitwarden server";
+
+      SSO_ENABLED = true
+      SSO_AUTHORITY = "https://authentik.foxflower.tech/application/o/vaultwarden/"
     };
   };
 }
