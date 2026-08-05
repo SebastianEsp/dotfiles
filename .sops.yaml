@@ -29,3 +29,9 @@ creation_rules:
           - *admin_sebastian
           - *host_foxflower
           - *recovery_coldstorage
+  - path_regex: hosts/foxflower/beszel/secrets\.yaml$
+    key_groups:
+      - age:
+          - *admin_sebastian
+          - *host_foxflower
+          - *recovery_coldstorage

@@ -8,21 +8,21 @@
   #     sops hosts/foxflower/beszel/secrets.yaml   # add beszel/key and beszel/token
   # and uncomment the three blocks below + the environmentFile line.
   #
-  # sops.secrets."beszel/key".sopsFile = ./secrets.yaml;
-  # sops.secrets."beszel/token".sopsFile = ./secrets.yaml;
+  sops.secrets."beszel/key".sopsFile = ./secrets.yaml;
+  sops.secrets."beszel/token".sopsFile = ./secrets.yaml;
   #
-  # sops.templates."beszel-agent.env" = {
-  #   content = ''
-  #     KEY=${config.sops.placeholder."beszel/key"}
-  #     TOKEN=${config.sops.placeholder."beszel/token"}
-  #   '';
-  #   restartUnits = [ "beszel-agent.service" ];
-  # };
+  sops.templates."beszel-agent.env" = {
+    content = ''
+      KEY=${config.sops.placeholder."beszel/key"}
+      TOKEN=${config.sops.placeholder."beszel/token"}
+    '';
+    restartUnits = [ "beszel-agent.service" ];
+  };
 
   services.beszel.agent = {
     enable = true;
     smartmon.enable = true;
-    # environmentFile = config.sops.templates."beszel-agent.env".path;
+    environmentFile = config.sops.templates."beszel-agent.env".path;
     environment = {
       HUB_URL = "https://beszel.foxflower.tech";
       LISTEN = "45876";
