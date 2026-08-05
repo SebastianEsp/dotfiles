@@ -28,7 +28,7 @@
       BASE_URL = "https://mealie.foxflower.tech";
       OIDC_AUTH_ENABLED = true;
       OIDC_SIGNUP_ENABLED = true;
-      OIDC_CONFIGURATION_URL = "https://authentik.foxflower.tech/application/o/mealie/";
+      OIDC_CONFIGURATION_URL = "https://authentik.foxflower.tech/application/o/mealie/.well-known/openid-configuration";
       OIDC_PROVIDER_NAME = "Foxflower";
     };
   };
