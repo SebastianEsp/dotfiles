@@ -23,8 +23,8 @@
     settings = {
       OIDC_AUTH_ENABLED = true;
       OIDC_SIGNUP_ENABLED = true;
-      OIDC_CONFIGURATION_URL = "";
-      OIDC_PROVIDER_NAME = "Foxflower"
+      OIDC_CONFIGURATION_URL = "https://authentik.foxflower.tech/application/o/mealie/";
+      OIDC_PROVIDER_NAME = "Foxflower";
     };
   };
 }
