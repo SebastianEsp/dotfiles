@@ -174,6 +174,21 @@
         }];
       };
 
+      http.routers.mealie = {
+        rule = "Host(`mealie.foxflower.tech`)";
+        entrypoints = [ "websecure" ];
+        service = "mealie";
+        tls = {
+          certResolver = "letsencrypt";
+       	  domains = ["mealie.foxflower.tech"];
+        };
+      };
+      http.services.mealie = {
+        loadBalancer.servers = [{
+          url = "http://localhost:9925";
+        }];
+      };
+
       http.middlewares = {
         basic-auth = {
           basicAuth = {
