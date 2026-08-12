@@ -32,3 +32,15 @@ optimize:
 fmt:
 	# format the nix files in this repo
 	nix fmt
+
+nvidia-hashes:
+	# regenerate all nvidia driver hashes: make nvidia-hashes V=610.57.04
+	# never bump `version` in hosts/desktop/nvidia.nix without rerunning this --
+	# a stale hash silently resolves to the old source instead of failing.
+	@test -n "$(V)" || (echo "usage: make nvidia-hashes V=<driver-version>" && exit 2)
+	@./scripts/nvidia-hashes.sh $(V)
+
+nvidia-check:
+	# verify the pending system generation's kernel module and GSP firmware agree
+	@modinfo $$(find -L /nix/var/nix/profiles/system/kernel-modules/lib/modules/*/kernel/drivers/video -name 'nvidia.ko*' | head -1) | grep '^version'
+	@echo -n "firmware:      "; basename $$(ls -d /nix/var/nix/profiles/system/firmware/nvidia/[0-9]*)

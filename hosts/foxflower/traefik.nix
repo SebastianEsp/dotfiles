@@ -204,6 +204,22 @@
         }];
       };
 
+      http.routers.actual = {
+        rule = "Host(`budget.foxflower.tech`)";
+        entrypoints = [ "websecure" ];
+        service = "actual";
+        tls = {
+          certResolver = "letsencrypt";
+       	  domains = ["budget.foxflower.tech"];
+        };
+      };
+      http.services.actual = {
+        loadBalancer.servers = [{
+          # 127.0.0.1, not localhost: actual binds v4-only (see ./actual).
+          url = "http://127.0.0.1:3000";
+        }];
+      };
+
       http.middlewares = {
         basic-auth = {
           basicAuth = {

@@ -14,6 +14,7 @@
       ./vaultwarden
       ./mealie
       ./beszel
+      ./actual
     ];
 
   nixpkgs.config.allowUnfree = true;
